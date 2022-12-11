@@ -6,8 +6,14 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/11 14:21:42 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/11 16:09:08 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SO_LONG_H
+# define SO_LONG_H
+
 #include "../libft/include/libft.h"
+#include "../minilibx-linux/mlx.h"
+
+#endif

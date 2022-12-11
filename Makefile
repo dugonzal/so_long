@@ -6,7 +6,7 @@
 #    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2022/12/11 15:43:44 by ciclo            ###   ########.fr        #
+#    Updated: 2022/12/11 16:07:53 by ciclo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ $(NAME): $(OBJ)
 	@echo "so_long compilando!"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -Imlx -O3 -c $< -o $@
 	@echo "Compilando $<"
 
 $(OBJF):
@@ -49,13 +49,13 @@ $(OBJF):
 all: $(NAME)
 
 clean:
-	$(RM) $< $(OBJ_DIR)
-	$(RM) bin 
-	make -C libft clean
+	@$(RM) $< $(OBJ_DIR)
+	@$(RM) bin
+	@make -C libft clean
 
 fclean: clean
-	$(RM) $(NAME)
-	make -C libft fclean
+	@$(RM) $(NAME)
+	@make -C libft fclean
 
 re: fclean all
 
