@@ -6,7 +6,7 @@
 #    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2022/12/11 15:20:01 by ciclo            ###   ########.fr        #
+#    Updated: 2022/12/11 15:43:44 by ciclo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-RM = rm -f
+RM = rm -rf
 
 SRC_DIR = src/
 OBJ_DIR = obj/
@@ -49,8 +49,8 @@ $(OBJF):
 all: $(NAME)
 
 clean:
-	$(RM) $(OBJS)
-	$(RM) $(OBJSF)
+	$(RM) $< $(OBJ_DIR)
+	$(RM) bin 
 	make -C libft clean
 
 fclean: clean
