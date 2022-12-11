@@ -6,7 +6,7 @@
 #    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2022/12/11 14:36:07 by ciclo            ###   ########.fr        #
+#    Updated: 2022/12/11 15:18:16 by ciclo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,30 +18,31 @@ CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
-SRCS_DIR = srcs/
-OBJS_DIR = obj/
+SRC_DIR = src/
+OBJ_DIR = obj/
 
-SRC_FILES = so_long
+SRC_FILES = so_long a
 
 #debuggers
 val :=  valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
 SANI := -fsanitize=address -g3
 
-SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(SRCS_FILES)))
-OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRCS_FILES)))
+SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-OBJSF = .cache_exists
+OBJF = .cache_exists
 
-$(NAME) : $(OBJS)
+$(NAME): $(OBJ)
 	make -C libft
 	mkdir -p bin
 	mv libft/libft.a bin/libft.a
+	$(CC) $(CFLAGS) $(OBJ) bin/libft.a -o $(NAME)
 
-$(OBJS_DIR)%.o : $(SRCS_DIR)%.c
-	mkdir -p $(OBJS_DIR)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJSF) :
+$(OBJF):
+	mkdir -p $(OBJ_DIR)
 
 
 all: $(NAME)
