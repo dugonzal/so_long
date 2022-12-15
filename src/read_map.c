@@ -6,20 +6,21 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/14 22:41:51 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/15 23:08:42 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	init_map(char *file_d)
+t_game	*init_map(char *file_d)
 {
-	t_map *map;
+	t_game *game;
 
-	map = malloc(sizeof(t_map));
-	if (!map)
+	game = malloc(sizeof(t_game));
+	if (!game)
 		return ;
-	map->file_d = file_d;
+	game->map.file_d = file_d;
+	return (game);
 }
 
 void	read_map(t_map	*map)
