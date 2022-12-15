@@ -6,7 +6,7 @@
 #    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2022/12/11 18:59:50 by ciclo            ###   ########.fr        #
+#    Updated: 2022/12/14 22:30:13 by ciclo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ MLX_PATH 	= ./mlx_linux/
 SRC_DIR = src/
 OBJ_DIR = obj/
 
-SRC_FILES = so_long
+SRC_FILES = so_long ft_check_map read_map
 
 #debuggers
 val :=  valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
@@ -37,8 +37,8 @@ OBJF = .cache_exists
 $(NAME): $(OBJ) $(MLX)
 	@mkdir -p bin
 	@make -C libft
-	@cp libft/libft.a bin/
-	$(CC) $(CFLAGS) $(OBJ) -Lbin -lft -L$(MLX_PATH) -lmlx -lXext -lX11 -lm -o $(NAME)
+	@mv libft/libft.a bin/
+	@$(CC) $(CFLAGS) $(OBJ) bin/libft.a -Lbin -lft -L$(MLX_PATH) -lmlx -lXext -lX11 -lm -o $(NAME)
 	@echo "so_long compilando!"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)

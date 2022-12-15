@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 14:21:01 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/15 23:02:47 by ciclo            ###   ########.fr       */
+/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
+/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mlx_int.h"
 
-#include "../include/so_long.h"
-
-int	main(int ac, char **av)
+int	mlx_destroy_display(t_xvar *xvar)
 {
-	t_game game;
-
-
-	if (ac == 2)
-	{
-		init_map (av[1]);
-		//game.mlx = mlx_init();
-		//game.mlx_win = mlx_new_window(game.mlx, 1000, 800, "so_long");
-		//mlx_loop(game.mlx);
-	}
-	return (0);
+	XCloseDisplay(xvar->display);
 }

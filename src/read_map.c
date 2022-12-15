@@ -1,45 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/14 22:35:43 by ciclo            ###   ########.fr       */
+/*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
+/*   Updated: 2022/12/14 22:41:51 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../include/so_long.h"
 
-#include "../libft/include/libft.h"
-#include "../mlx_linux/mlx.h"
-
-typedef struct s_map
+void	init_map(char *file_d)
 {
-	char	**map;
-	int		width;
-	char	*file_d;
-	int		height;
-}	t_map;
+	t_map *map;
 
-typedef struct s_player
+	map = malloc(sizeof(t_map));
+	if (!map)
+		return ;
+	map->file_d = file_d;
+}
+
+void	read_map(t_map	*map)
 {
-	int		x;
-	int		y;
-	int		collectibles;
-}	t_player;
+/*	int fd;
+	char *line;
 
-typedef struct s_game
-{
-	void	*mlx;
-	void	*mlx_win;
-	t_map	map;
-	t_player	player;
-}	t_game;
-
-void	init_map(char *map);
-
-
-#endif
+	fd = open()*/
+}
