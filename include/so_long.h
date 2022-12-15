@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/14 22:35:43 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/15 23:07:05 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_game
 	t_player	player;
 }	t_game;
 
-void	init_map(char *map);
+t_game	*init_map(char *map);
 
 
 #endif
