@@ -6,14 +6,14 @@
 #    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2022/12/14 22:30:13 by ciclo            ###   ########.fr        #
+#    Updated: 2022/12/21 16:10:59 by ciclo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= so_long
 MLX		= mlx_linux_linux.a
 CC		= gcc
-CFLAGS	= #-Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -rf
 MLX_CF	= -lm -lbsd -lmlx -lXext -lX11
 MLX_PATH 	= ./mlx_linux/
