@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/21 20:30:56 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/21 22:20:22 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ void	check(char *str)
 }
 */
 
-void	read_game(t_game *game)
+void	len_map(t_game *game)
 {
-	int fd;
-	char *line;
+	int		fd;
+	char	*line;
+	int		i;
 
 	fd = open (game->map.file_d, O_RDONLY);
 	line = get_next_line (fd);
@@ -48,17 +49,44 @@ void	read_game(t_game *game)
 		err ("err.map");
 	while (line[game->map.width])
 		game->map.width++;
+	i = 0;
 	while (*line)
 	{
 		if ((int)ft_strlen(line) != game->map.width)
 		{
-			printf ("inexplicable");
+			ft_printf ("Error.Map\n");
+			exit (EXIT_FAILURE);
 		}
 		game->map.height++;
 		free (line);
 		line = get_next_line (fd);
+		i++;
 	}
-	printf ("%d %d", game->map.height, game->map.width);
 	line = NULL;
+	close (fd);
+}
+
+void	read_map(t_game *game)
+{
+	int i;
+	int fd;
+	char *line;
+
+	fd = open (game->map.file_d, O_RDONLY);
+	if (!fd)
+		return ;
+	i = 0;
+	game->map.map = (char **)malloc(sizeof(char *) * (game->map.width + 1));
+	if (!game->map.map)
+		return ;
+	line = get_next_line(fd);
+	while (*line)
+	{
+		game->map.map[i] = line;
+		line = get_next_line (fd);
+		i++;
+	}
+	game->map.map[i] = NULL;
+	free (line);
 	close (fd);
 }
