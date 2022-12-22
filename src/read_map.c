@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/22 18:41:55 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/22 21:07:16 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static void	check_ext(char *path)
 {
 	char *check;
 
+	if (ft_strlen (str) < 4)
+		errors ("ext.len");
 	check = ft_strrchr(path, '.');
 	if (!check ||ft_strncmp(".ber", check, ft_strlen (check)))
 		errors ("ext");
@@ -69,14 +71,14 @@ void	read_map(t_game *game)
 	game->map.map = (char **)malloc(sizeof(char *) * (game->map.width + 1));
 	if (!game->map.map)
 		return ;
+	line = NULL;
 	line = get_next_line(fd);
 	if (!line)
-		errors ("");
+		errors ("line");
 	while (*line)
 	{
 		game->map.map[i] = line;
 		line = get_next_line (fd);
-		printf ("%s", game->map.map[i]);
 		i++;
 	}
 	game->map.map[i] = NULL;
