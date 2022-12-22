@@ -6,7 +6,7 @@
 #    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2022/12/22 18:13:11 by ciclo            ###   ########.fr        #
+#    Updated: 2022/12/22 18:44:18 by ciclo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,3 +74,5 @@ normi-i:
 	pip install norminette
 normi:
 	norminette
+tree:
+	tree > esquema
