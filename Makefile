@@ -6,7 +6,7 @@
 #    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2022/12/21 22:16:45 by ciclo            ###   ########.fr        #
+#    Updated: 2022/12/22 18:13:11 by ciclo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ MLX_PATH 	= ./mlx_linux/
 SRC_DIR = src/
 OBJ_DIR = obj/
 
-SRC_FILES = so_long ft_check_map read_map
+SRC_FILES = so_long ft_check_map read_map utlis
 
 #debuggers
 val :=  valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
@@ -67,3 +67,10 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+normi-i:
+	python3 -m venv venv
+	. venv/bin/activate
+	pip install norminette
+normi:
+	norminette
