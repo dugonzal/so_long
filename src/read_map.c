@@ -6,13 +6,13 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/22 17:30:56 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/22 18:41:55 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	init_map(char *file_d, 	t_game *game)
+void	init_structs(char *file_d, t_game *game)
 {
 	game->map.map = NULL;
 	game->map.height = 0;
@@ -24,43 +24,35 @@ void	init_map(char *file_d, 	t_game *game)
 	game->player.scape = 0;
 }
 
-/*
-void	check(char *str)
+static void	check_ext(char *path)
 {
-	int i;
+	char *check;
 
-	i = ft_strlen (str);
-	printf ("%d", i);
-	if (i < 3)
-		err ("Extencion .ber no valid", 1);
-
+	check = ft_strrchr(path, '.');
+	if (!check ||ft_strncmp(".ber", check, ft_strlen (check)))
+		errors ("ext");
 }
-*/
+
 
 void	len_map(t_game *game)
 {
 	int		fd;
 	char	*line;
-	int		i;
 
+	check_ext(game->map.file_d);
 	fd = open (game->map.file_d, O_RDONLY);
+	if (!fd)
+		errors ("fd.open");
 	line = get_next_line (fd);
-	if (!line)
-		err ("err.map");
 	while (line[game->map.width])
 		game->map.width++;
-	i = 0;
 	while (*line)
 	{
 		if ((int)ft_strlen(line) != game->map.width)
-		{
-			ft_printf ("Error.Map\n");
-			exit (EXIT_FAILURE);
-		}
+			errors ("line != width");
 		game->map.height++;
 		free (line);
 		line = get_next_line (fd);
-		i++;
 	}
 	line = NULL;
 	close (fd);
@@ -73,17 +65,18 @@ void	read_map(t_game *game)
 	char *line;
 
 	fd = open (game->map.file_d, O_RDONLY);
-	if (!fd)
-		return ;
 	i = 0;
 	game->map.map = (char **)malloc(sizeof(char *) * (game->map.width + 1));
 	if (!game->map.map)
 		return ;
 	line = get_next_line(fd);
+	if (!line)
+		errors ("");
 	while (*line)
 	{
 		game->map.map[i] = line;
 		line = get_next_line (fd);
+		printf ("%s", game->map.map[i]);
 		i++;
 	}
 	game->map.map[i] = NULL;
