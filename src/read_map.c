@@ -6,18 +6,18 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/22 21:26:21 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/23 14:38:35 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	init_structs(char *file_d, t_game *game)
+void	init_structs(char *path, t_game *game)
 {
 	game->map.map = NULL;
 	game->map.height = 0;
 	game->map.width = 0;
-	game->map.file_d = file_d;
+	game->map.file_d = path;
 	game->player.collectibles = 0;
 	game->player.x = 0;
 	game->player.y = 0;
