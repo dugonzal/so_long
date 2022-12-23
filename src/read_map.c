@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/23 15:07:26 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/23 15:10:35 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static void	check_ext(char *path)
 
 	if (ft_strlen (path) < 4)
 		errors ("ext.len");
-	check = ft_strrchr(path, '.'  || ft_strncmp(".ber", check, ft_strlen (check)) != 0);
-	if (!check)
+	check = ft_strrchr(path, '.');
+	if (!check || ft_strncmp(".ber", check, ft_strlen (check)))
 		errors ("ext");
 }
 
