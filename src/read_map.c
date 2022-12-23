@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/23 15:10:35 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/23 15:30:21 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static void	check_ext(char *path)
 
 static int	open_fd(char *path, int fd)
 {
-	fd = open (path, O_RDONLY);
-	if (!fd)
+	fd = open (path, O_RDONLY | __O_NOFOLLOW);
+	if (!fd || fd == -1)
 		errors ("fd.open");
 	return (fd);
 }
