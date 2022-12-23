@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:31:18 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/22 18:41:58 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/23 12:23:48 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	errors(char *str)
 {
-	printf (" Error.%s\n", str);
+	printf ("Error\n %s", str);
 	exit (1);
 }
