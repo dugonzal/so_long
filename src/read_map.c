@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/23 14:51:54 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/23 15:07:26 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ static void	check_ext(char *path)
 
 	if (ft_strlen (path) < 4)
 		errors ("ext.len");
-	check = ft_strrchr(path, '.');
-	if (!check ||ft_strncmp(".ber", check, ft_strlen (check)))
+	check = ft_strrchr(path, '.'  || ft_strncmp(".ber", check, ft_strlen (check)) != 0);
+	if (!check)
 		errors ("ext");
 }
 
-static int	read_fd(char *path, int fd)
+static int	open_fd(char *path, int fd)
 {
-	open (path, O_RDONLY);
+	fd = open (path, O_RDONLY);
 	if (!fd)
 		errors ("fd.open");
 	return (fd);
@@ -50,7 +50,7 @@ void	len_map(t_game *game)
 
 	fd = 0;
 	check_ext(game->map.path);
-	fd = read_fd(game->map.path, fd);
+	fd = open_fd(game->map.path, fd);
 	line = get_next_line (fd);
 	while (line[game->map.width])
 		game->map.width++;
@@ -72,7 +72,8 @@ void	read_map(t_game *game)
 	int fd;
 	char *line;
 
-	fd = open (game->map.path, O_RDONLY);
+	fd = 0;
+	fd = open_fd(game->map.path, fd);
 	i = 0;
 	game->map.map = (char **)malloc(sizeof(char *) * (game->map.width + 1));
 	if (!game->map.map)
