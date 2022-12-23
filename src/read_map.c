@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/23 14:38:35 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/23 14:51:54 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_structs(char *path, t_game *game)
 	game->map.map = NULL;
 	game->map.height = 0;
 	game->map.width = 0;
-	game->map.file_d = path;
+	game->map.path = path;
 	game->player.collectibles = 0;
 	game->player.x = 0;
 	game->player.y = 0;
@@ -35,16 +35,22 @@ static void	check_ext(char *path)
 		errors ("ext");
 }
 
+static int	read_fd(char *path, int fd)
+{
+	open (path, O_RDONLY);
+	if (!fd)
+		errors ("fd.open");
+	return (fd);
+}
 
 void	len_map(t_game *game)
 {
 	int		fd;
 	char	*line;
 
-	check_ext(game->map.file_d);
-	fd = open (game->map.file_d, O_RDONLY);
-	if (!fd)
-		errors ("fd.open");
+	fd = 0;
+	check_ext(game->map.path);
+	fd = read_fd(game->map.path, fd);
 	line = get_next_line (fd);
 	while (line[game->map.width])
 		game->map.width++;
@@ -66,7 +72,7 @@ void	read_map(t_game *game)
 	int fd;
 	char *line;
 
-	fd = open (game->map.file_d, O_RDONLY);
+	fd = open (game->map.path, O_RDONLY);
 	i = 0;
 	game->map.map = (char **)malloc(sizeof(char *) * (game->map.width + 1));
 	if (!game->map.map)
