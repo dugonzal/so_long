@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/24 11:44:39 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/24 12:45:03 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 typedef struct s_map
 {
 	char	**map;
-	int		width; // anchura
+	int		width; // anchura && lenght -> anchura
 	int		height; // altura
 	char	*path;
 }	t_map;
