@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/23 14:50:55 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/24 11:44:39 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 typedef struct s_map
 {
 	char	**map;
-	int		width;
-	int		height;
+	int		width; // anchura
+	int		height; // altura
 	char	*path;
 }	t_map;
 
@@ -50,5 +50,6 @@ void	init_structs(char *file_d, 	t_game *game);
 void	len_map(t_game *game);
 void	read_map(t_game *game);
 void	errors(char *str);
+void	check_map(t_game *game);
 
 #endif
