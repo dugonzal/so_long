@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/24 12:46:20 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/24 12:51:33 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,9 @@ void	check_map(t_game *game)
 	v = 0;
 	while (++v < game->map.height) // altura
 	{
-		if (game->map.map[v][0] != '1' || game->map.map[v][game->map.width] != '1')
+		if (game->map.map[v][0] != '1' || game->map.map[v][game->map.width-2] != '1')
 			err++;
 	}
-	printf ("[%d]\n", game->map.width);
-	printf ("{%c}",game->map.map[0][game->map.width]-2);
-	printf ("[%d]", err);
 	if (err > 1)
 		errors ("");
 }
