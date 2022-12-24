@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/24 21:30:16 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/24 21:32:20 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	init_structs(char *path, t_game *game)
 	game->player.x = 0;
 	game->player.y = 0;
 	game->player.scape = 0;
-
 }
 
 static	void	check_ext(char *path)
@@ -70,9 +69,9 @@ void	len_map(t_game *game)
 
 void	read_map(t_game *game)
 {
-	int i;
-	int fd;
-	char *line;
+	int		i;
+	int		fd;
+	char	*line;
 
 	fd = 0;
 	fd = open_fd(game->map.path, fd);
@@ -86,7 +85,6 @@ void	read_map(t_game *game)
 	while (i < game->map.height)
 	{
 		game->map.map[i] = line;
-		//printf ("%s", game->map.map[i]);
 		line = get_next_line (fd);
 		i++;
 	}
@@ -94,4 +92,3 @@ void	read_map(t_game *game)
 	game->map.map[i] = NULL;
 	close (fd);
 }
-
