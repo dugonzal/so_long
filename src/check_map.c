@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/24 12:51:33 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/24 12:52:25 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ void	check_map(t_game *game)
 			err++;
 	}
 	if (err > 1)
-		errors ("");
+		errors ("Map periferia != 1");
 }

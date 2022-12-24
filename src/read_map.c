@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/23 21:11:00 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/24 12:39:10 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ void	len_map(t_game *game)
 	fd = 0;
 	fd = open_fd(game->map.path, fd);
 	line = get_next_line (fd);
-	while (line[game->map.width])
-		game->map.width++;
+	game->map.width = ft_strlen (line);
 	while (*line)
 	{
 		if ((int)ft_strlen(line) != game->map.width)
@@ -85,10 +84,10 @@ void	read_map(t_game *game)
 	if (!line)
 		errors ("line");
 	i = 0;
-	while (game->map.height--)
+	while (i < game->map.height)
 	{
 		game->map.map[i] = line;
-//		printf ("%s", game->map.map[i]);
+		printf ("%s", game->map.map[i]);
 		line = get_next_line (fd);
 		i++;
 	}
