@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/24 15:00:05 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/24 17:53:51 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,7 @@ void	check_characters(t_game *game)
 				n++;
 			}
 			else
-			{
-				printf ("[%c]\n", game->map.map[i][n]);
 				errors ("hay carateres no contemplados en el mapa");
-			}
-			n++;
 		}
 		i++;
 	}
