@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/25 15:14:11 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/25 16:09:25 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	check(t_game *game, int i, int n)
 {
 	return (game->map.map[i][n] == '1' || game->map.map[i][n] == '0' \
 			|| game->map.map[i][n] == 'C' || game->map.map[i][n] == '\n' || \
-			game->map.map[i][n] == 'E' || game->map.map[i][n] == 'P' );
+			game->map.map[i][n] == 'E' || game->map.map[i][n] == 'P');
 }
 
 void	check_characters(t_game *game)
@@ -67,9 +67,9 @@ void	check_map(t_game *game)
 
 void	check_multi(t_game *game)
 {
-	int i;
-	int n;
-	int err;
+	int	i;
+	int	n;
+	int	err;
 
 	i = 0;
 	err = 0;
@@ -90,5 +90,6 @@ void	check_multi(t_game *game)
 	}
 	if (!game->map.count || !game->map.player || game->map.player != 1 || \
 	err != 1 || !err)
-		errors (" mapa invalido, hay mas o menos jugadores, coleccionables o salidas en el mapa");
+		errors (" mapa invalido, hay mas o menos jugadores,\
+		coleccionables o salidas en el mapa");
 }
