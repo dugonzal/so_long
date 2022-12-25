@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:01 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/25 17:12:16 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/25 17:59:45 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ static int	create_map(t_game *game)
 	return (0);
 }
 */
+
+int	ft_exit(t_game *data)
+{
+	(void) *data;
+	exit(EXIT_SUCCESS);
+}
+
 int	main(int ac, char **av)
 {
 	t_game	game;
@@ -48,10 +55,10 @@ int	main(int ac, char **av)
 		read_map (&game);
 		check_map (&game);
 		check_multi (&game);
-		/*game.mlx = mlx_init();
+		game.mlx = mlx_init();
 		game.mlx_win = mlx_new_window(game.mlx, game.map.width * 30, game.map.height * 50, "so_long");
-		mlx_loop(game.mlx);*/
-
+		mlx_hook(game.mlx_win, 17, 0, ft_exit, &game);// con este loop o bucle podemos cerra la ventana desde la x
+		mlx_loop(game.mlx);
 	}
 	else
 		errors ("no se ha especificado un mapa");
