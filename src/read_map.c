@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/24 21:32:20 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/25 17:12:59 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	init_structs(char *path, t_game *game)
 	game->map.map = NULL;
 	game->map.height = 0;
 	game->map.width = 0;
+	game->map.player = 0;
+	game->map.count = 0;
 	game->map.path = path;
 	game->player.collectibles = 0;
 	game->player.x = 0;
@@ -30,7 +32,7 @@ static	void	check_ext(char *path)
 
 	check = ft_strrchr(path, '.');
 	if (!check || ft_strncmp(".ber", check, ft_strlen (check)) \
-	|| ft_strlen (path) < 4)
+		|| ft_strlen (path) < 4)
 		errors ("ext");
 }
 
@@ -43,28 +45,6 @@ static int	open_fd(char *path, int fd)
 		close (fd);
 	}
 	return (fd);
-}
-
-void	len_map(t_game *game)
-{
-	int		fd;
-	char	*line;
-
-	check_ext(game->map.path);
-	fd = 0;
-	fd = open_fd(game->map.path, fd);
-	line = get_next_line (fd);
-	game->map.width = ft_strlen (line);
-	while (*line)
-	{
-		if ((int)ft_strlen(line) != game->map.width)
-			errors ("line != width");
-		game->map.height++;
-		free (line);
-		line = get_next_line (fd);
-	}
-	line = NULL;
-	close (fd);
 }
 
 void	read_map(t_game *game)
@@ -90,5 +70,27 @@ void	read_map(t_game *game)
 	}
 	free (line);
 	game->map.map[i] = NULL;
+	close (fd);
+}
+
+void	len_map(t_game *game)
+{
+	int		fd;
+	char	*line;
+
+	check_ext(game->map.path);
+	fd = 0;
+	fd = open_fd(game->map.path, fd);
+	line = get_next_line (fd);
+	game->map.width = ft_strlen (line);
+	while (*line)
+	{
+		if ((int)ft_strlen(line) != game->map.width)
+			errors ("line != width");
+		free (line);
+		game->map.height++;
+		line = get_next_line (fd);
+	}
+	line = NULL;
 	close (fd);
 }
