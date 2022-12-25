@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/25 17:11:24 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/25 17:14:19 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	check_multi(t_game *game)
 		{
 			if (game->map.map[i][n] == 'C')
 				game->map.count += 1;
-			else if (game->map.map[i][n] == 'P') // else if mejor que if -< if
+			else if (game->map.map[i][n] == 'P')
 				game->map.player += 1;
 			else if (game->map.map[i][n] == 'E')
 				err++;
