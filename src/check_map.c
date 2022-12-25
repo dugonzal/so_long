@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/24 18:05:30 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/25 15:14:11 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,20 @@ void	check_characters(t_game *game)
 {
 	int	i;
 	int	n;
-	int	p;
 
 	i = 0;
-	p = 0;
 	while (game->map.map[i])
 	{
 		n = 0;
 		while (game->map.map[i][n])
 		{
 			if (check (game, i, n))
-			{
-				if (game->map.map[i][n - 1] == 'E' || \
-				game->map.map[i][n - 1] == 'P')
-					p++;
 				n++;
-			}
 			else
 				errors ("hay carateres no contemplados en el mapa");
 		}
 		i++;
 	}
-	if (p != 2)
-		errors ("hay mas de un avatar o salidas en el mapa");
 }
 
 void	check_map(t_game *game)
@@ -72,5 +63,32 @@ void	check_map(t_game *game)
 	}
 	if (err > 1)
 		errors ("Map periferia != 1");
-	check_characters (game);
+}
+
+void	check_multi(t_game *game)
+{
+	int i;
+	int n;
+	int err;
+
+	i = 0;
+	err = 0;
+	while (game->map.map[i])
+	{
+		n = 0;
+		while (game->map.map[i][n])
+		{
+			if (game->map.map[i][n] == 'C')
+				game->map.count += 1;
+			else if (game->map.map[i][n] == 'P') // else if mejor que if -< if
+				game->map.player += 1;
+			else if (game->map.map[i][n] == 'E')
+				err++;
+			n++;
+		}
+		i++;
+	}
+	if (!game->map.count || !game->map.player || game->map.player != 1 || \
+	err != 1 || !err)
+		errors (" mapa invalido, hay mas o menos jugadores, coleccionables o salidas en el mapa");
 }
