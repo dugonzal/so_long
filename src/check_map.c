@@ -6,11 +6,13 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/26 15:46:51 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/26 15:50:02 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+
 
 static int	check(t_game *game, int i, int n)
 {
@@ -32,9 +34,9 @@ void	check_characters(t_game *game)
 		{
 			if (!check (game, i, n))
 				errors ("hay carateres no contemplados en el mapa");
-			n++;
+			++n;
 		}
-		i++;
+		++i;
 	}
 }
 
@@ -62,7 +64,6 @@ void	check_map(t_game *game)
 	}
 	if (err > 1)
 		errors ("Map periferia != 1");
-	check_characters (game);
 }
 
 void	check_multi(t_game *game)
