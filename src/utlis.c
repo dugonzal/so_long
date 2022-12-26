@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:31:18 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/26 15:30:59 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/26 18:04:39 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,11 @@ int	close_window(t_game *game)
 {
 	mlx_destroy_window (game->mlx, game->mlx_win);
 	exit(EXIT_SUCCESS);
+}
+
+int	key_press(int keycode, t_game *game)
+{
+	if (keycode == ESC || keycode == Qp)
+		close_window(game);
+	return (0);
 }
