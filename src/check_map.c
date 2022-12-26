@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/25 17:14:19 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/26 15:46:51 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ void	check_characters(t_game *game)
 		n = 0;
 		while (game->map.map[i][n])
 		{
-			if (check (game, i, n))
-				n++;
-			else
+			if (!check (game, i, n))
 				errors ("hay carateres no contemplados en el mapa");
+			n++;
 		}
 		i++;
 	}
@@ -63,6 +62,7 @@ void	check_map(t_game *game)
 	}
 	if (err > 1)
 		errors ("Map periferia != 1");
+	check_characters (game);
 }
 
 void	check_multi(t_game *game)
@@ -92,4 +92,11 @@ void	check_multi(t_game *game)
 	err != 1 || !err)
 		errors (" mapa invalido, hay mas o menos jugadores,\
 		coleccionables o salidas en el mapa");
+}
+
+void	parser_map(t_game *game)
+{
+	check_map(game);
+	check_multi (game);
+	check_characters (game);
 }
