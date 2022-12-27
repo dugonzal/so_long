@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:01 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/27 14:14:53 by ciclo            ###   ########.fr       */
+/*   Updated: 2022/12/27 15:03:30 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,7 @@
 /* si hago itero una variable de la estrcura con -- o cambio su valor
 	en el flujo del programa su valor se ve alterado en la ejecucion del programa
 */
-/*
-static int	create_map(t_game *game)
-{
-	int i;
-	int n;
 
-	i = 0;
-	while (game->map.map[i])
-	{
-		n = 0;
-		while (game->map.map[i][n])
-		{
-			if (game->map.map[i][n] == '1')
-				{mlx_put_image_to_window(game, avatar i, n);;
-			n++;
-		}
-		i++;
-	}
-	return (0);
-}
-*/
 void	funcions(t_game *game, char *path)
 {
 	init_structs (path, game);
@@ -52,7 +32,6 @@ void events(t_game *game)
 	mlx_hook(game->mlx_win, 2, 1, key_press, game);
 }
 
-
 int	main(int ac, char **av)
 {
 	t_game	game;
@@ -63,6 +42,7 @@ int	main(int ac, char **av)
 	game.mlx = mlx_init();
 	game.mlx_win = mlx_new_window(game.mlx, game.map.width * 30, game.map.height * 50, "so_long");
 	events (&game);
+	game.img.img = mlx_xpm_file_to_image(game.mlx, "./test.xpm", &game.img.a, &game.img.b);
 	mlx_loop(game.mlx);
 	exit (EXIT_SUCCESS);
 }
