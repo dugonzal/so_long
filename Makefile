@@ -6,7 +6,7 @@
 #    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2022/12/23 15:39:14 by ciclo            ###   ########.fr        #
+#    Updated: 2022/12/26 19:58:38 by ciclo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ $(NAME): $(OBJ) $(MLX)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 	@$(CC) -g $(CFLAGS) -c $< -o $@
-	@echo "Compilando $<"
+	@echo "Compilando $< "
 
 $(MLX):
 	@make -C $(MLX_PATH)
@@ -58,11 +58,13 @@ clean:
 	@$(RM) bin
 	@make -C libft clean
 	@make -C mlx_linux clean
+	@echo "clean done 🧹"
 
 fclean: clean
 	@$(RM) $(NAME)
 	@make -C libft fclean
 	@make clean -C $(MLX_PATH)
+	@echo "fclean done 🗑"
 
 re: fclean all
 
