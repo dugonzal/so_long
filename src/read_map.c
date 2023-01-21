@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/26 18:10:37 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/21 21:32:46 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	open_fd(char *path, int fd)
 
 void	read_map(t_game *game)
 {
-	int		i;
+	int		x;
 	int		fd;
 	char	*line;
 
@@ -61,12 +61,12 @@ void	read_map(t_game *game)
 	line = get_next_line(fd);
 	if (!line)
 		errors ("line");
-	i = 0;
-	while (i < game->map.height)
+	x = 0;
+	while (x < game->map.height)
 	{
-		game->map.map[i] = line;
+		game->map.map[x] = line;
 		line = get_next_line (fd);
-		i++;
+		x++;
 	}
 	free (line);
 	game->map.map[i] = NULL;
