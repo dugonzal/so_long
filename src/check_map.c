@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/26 18:10:52 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/21 21:39:38 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,52 +14,53 @@
 
 
 
-static int	check(t_game *game, int i, int n)
+static int	check(t_game *game, int y, int x)
 {
-	return (game->map.map[i][n] == '1' || game->map.map[i][n] == '0' \
-			|| game->map.map[i][n] == 'C' || game->map.map[i][n] == '\n' || \
-			game->map.map[i][n] == 'E' || game->map.map[i][n] == 'P');
+	return (game->map.map[y][x] == '1' || game->map.map[y][x] == '0' \
+			|| game->map.map[y][x] == 'C' || game->map.map[y][x] == '\n' || \
+			game->map.map[y][x] == 'E' || game->map.map[y][x] == 'P');
 }
 
 void	check_characters(t_game *game)
 {
-	int	i;
-	int	n;
+	int	y;
+	int	x;
 
-	i = 0;
-	while (game->map.map[i])
+	y = 0;
+	while (game->map.map[y])
 	{
-		n = 0;
-		while (game->map.map[i][n])
+		x = 0;
+		while (game->map.map[x][y])
 		{
-			if (!check (game, i, n))
+			if (!check (game, y, x))
 				errors ("hay carateres no contemplados en el mapa");
-			++n;
+			++x;
 		}
-		++i;
+		++y;
 	}
 }
 
 void	check_map(t_game *game)
 {
-	int		v;
+	int		x;
 	int		err;
 	size_t	len;
 
-	v = 0;
+	x = 0;
 	err = 0;
 	len = arr_size (game->map.map);
-	while (v < game->map.width)
+	while (x < game->map.width)
 	{
-		if (game->map.map[0][v] != '1' || game->map.map[len - 1][v] != '1')
+		if (game->map.map[0][x] != '1' \
+		 || game->map.map[len - 1][x] != '1')
 			err++;
-		v++;
+		x++;
 	}
-	v = 0;
-	while (++v < game->map.height)
+	x = 0;
+	while (++x < game->map.height)
 	{
-		if (game->map.map[v][0] != '1' || \
-		game->map.map[v][game->map.width - 2] != '1')
+		if (game->map.map[x][0] != '1' || \
+		game->map.map[x][game->map.width - 2] != '1')
 			err++;
 	}
 	if (err > 1)
