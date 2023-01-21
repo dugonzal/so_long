@@ -6,13 +6,11 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/21 21:39:38 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/21 21:43:24 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-
 
 static int	check(t_game *game, int y, int x)
 {
@@ -52,7 +50,7 @@ void	check_map(t_game *game)
 	while (x < game->map.width)
 	{
 		if (game->map.map[0][x] != '1' \
-		 || game->map.map[len - 1][x] != '1')
+		|| game->map.map[len - 1][x] != '1')
 			err++;
 		x++;
 	}
