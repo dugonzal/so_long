@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/21 21:35:35 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/21 21:44:41 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,7 @@ void	read_map(t_game *game)
 
 	fd = 0;
 	fd = open_fd(game->map.path, fd);
-	game->map.map = (char **)malloc(sizeof(char *) * (game->map.width + 1));
-	if (!game->map.map)
+	if (!(game->map.map = (char **)malloc(sizeof(char *) * (game->map.width + 1))))
 		return ;
 	line = get_next_line(fd);
 	if (!line)
