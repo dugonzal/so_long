@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:01 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/22 17:09:43 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/22 21:12:56 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 	en el flujo del programa su valor se ve alterado en la ejecucion del programa
 */
 
-void	funcions(t_game *game, char *path)
+void	map(t_game *game, char *path)
 {
 	init_structs (path, game);
 	len_map (game);
@@ -38,9 +38,9 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		errors ("no se ha especificado un mapa");
-	funcions (&game, av[1]);
+	map (&game, av[1]);
 	game.mlx = mlx_init();
-	game.mlx_win = mlx_new_window(game.mlx, game.map.width * 35, game.map.height * 60, "so_long");
+	game.mlx_win = mlx_new_window(game.mlx, game.map.width * 38, game.map.height * 40, "so_long");
 	events (&game);
 	map_images (&game);
 	create_map (&game);
