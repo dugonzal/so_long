@@ -6,13 +6,13 @@
 #    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2023/01/22 22:54:40 by ciclo            ###   ########.fr        #
+#    Updated: 2023/01/22 23:11:18 by ciclo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= so_long
 MLX		= mlx_linux_linux.a
-CC		= gcc -g
+CC		= clang -g
 CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -rf
 MLX_CF	= -lm -lbsd -lmlx -lXext -lX11
@@ -32,14 +32,12 @@ OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 OBJF = .cache_exists
 
-
-
 $(NAME): $(OBJ)
 	@mkdir -p bin
 	@make -C libft
 	@mv libft/libft.a bin/
 	@make -C $(MLX_PATH)
-	@$(CC) $(CFLAGS) $(OBJ) bin/libft.a -Lbin -lft -L$(MLX_PATH) -lmlx -lXext -lX11 -lm -g -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) bin/libft.a -Lbin -lft -L$(MLX_PATH) -lmlx -lXext -lX11 -lm -o $(NAME)
 	@echo "so_long compilando!"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
