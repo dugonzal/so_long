@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/22 17:08:18 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/22 22:13:30 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	len_map(t_game *game);
 void	read_map(t_game *game);
 void	errors(char *str);
 void	check_map(t_game *game);
-void	check_multi(t_game *game);
+void	assign_caracteres_map(t_game *game);
 int		close_window(t_game *game);
 int		key_press(int keycode, t_game *game);
 void	map_images(t_game *game);

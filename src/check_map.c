@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/22 21:27:26 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/22 22:12:42 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	check_map(t_game *game)
 		errors ("Map periferia != 1");
 }
 
-void	check_multi(t_game *game)
+void	assign_caracteres_map(t_game *game)
 {
 	int	y;
 	int	x;
@@ -97,6 +97,6 @@ void	check_multi(t_game *game)
 void	parser_map(t_game *game)
 {
 	check_map(game);
-	check_multi (game);
+	assign_caracteres_map(game);
 	check_characters (game);
 }
