@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/22 22:12:42 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/22 23:02:10 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	check_map(t_game *game)
 			err++;
 		x++;
 	}
-	x = 0;
+	x = -1;
 	while (++x < game->map.height)
 	{
 		if (game->map.map[x][0] != '1' || \
@@ -69,10 +69,10 @@ void	assign_caracteres_map(t_game *game)
 {
 	int	y;
 	int	x;
-	int	err;
+	int	exit;
 
 	y = 0;
-	err = 0;
+	exit = 0;
 	while (game->map.map[y])
 	{
 		x = 0;
@@ -83,13 +83,13 @@ void	assign_caracteres_map(t_game *game)
 			else if (game->map.map[y][x] == 'P')
 				game->map.player += 1;
 			else if (game->map.map[y][x] == 'E')
-				err++;
+				exit++;
 			x++;
 		}
 		y++;
 	}
 	if (!game->map.count || !game->map.player || game->map.player != 1 || \
-	err != 1 || !err)
+	err != 1 || !exit || exit > 1)
 		errors (" mapa invalido, hay mas o menos jugadores,\
 		coleccionables o salidas en el mapa");
 }
