@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:01 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/22 16:50:06 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/22 17:09:43 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,10 @@ int	main(int ac, char **av)
 		errors ("no se ha especificado un mapa");
 	funcions (&game, av[1]);
 	game.mlx = mlx_init();
-	game.mlx_win = mlx_new_window(game.mlx, game.map.width * 30, game.map.height * 50, "so_long");
+	game.mlx_win = mlx_new_window(game.mlx, game.map.width * 35, game.map.height * 60, "so_long");
 	events (&game);
-	int i = 0;
-	int j = 0;
-	void *img = mlx_xpm_file_to_image(game.mlx, "src/test.xpm", &(i), &(j));
-	mlx_put_image_to_window(game.mlx, game.mlx_win, img, i, j);
+	map_images (&game);
+	create_map (&game);
 	mlx_loop(game.mlx);
 	exit (EXIT_SUCCESS);
 } 

@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:31:18 by ciclo             #+#    #+#             */
-/*   Updated: 2022/12/27 15:02:50 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/22 17:08:55 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,31 @@ int	key_press(int keycode, t_game *game)
 	return (0);
 }
 
+void	map_images(t_game *game)
+{
+	game->img.width = 10;
+	game->img.height = 10;
+	game->img.floor = mlx_xpm_file_to_image(game->mlx, "src/test.xpm",\
+	&game->img.width, &game->img.height);
+}
+
 int	create_map(t_game *game)
 {
-	int i;
-	int n;
+	int y;
+	int x;
 
-	i = 0;
-	while (game->map.map[i])
+	y = 0;
+	
+	while (game->map.map[y])
 	{
-		n = 0;
-		while (game->map.map[i][n])
+		x = 0;
+		while (game->map.map[y][x])
 		{
-			if (game->map.map[i][n] == '1')
-				mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.img, n * 30, i * 50);
-			n++;
+			if (game->map.map[y][x] == '1')
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.floor, (game->img.width * x), (game->img.height * y));
+			x++;
 		}
-		i++;
+		y++;
 	}
 	return (0);
-}
+} 
