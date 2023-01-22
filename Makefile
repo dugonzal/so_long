@@ -6,7 +6,7 @@
 #    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2022/12/26 19:58:38 by ciclo            ###   ########.fr        #
+#    Updated: 2023/01/22 22:54:40 by ciclo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,19 +34,17 @@ OBJF = .cache_exists
 
 
 
-$(NAME): $(OBJ) $(MLX)
+$(NAME): $(OBJ)
 	@mkdir -p bin
 	@make -C libft
 	@mv libft/libft.a bin/
+	@make -C $(MLX_PATH)
 	@$(CC) $(CFLAGS) $(OBJ) bin/libft.a -Lbin -lft -L$(MLX_PATH) -lmlx -lXext -lX11 -lm -g -o $(NAME)
 	@echo "so_long compilando!"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 	@$(CC) -g $(CFLAGS) -c $< -o $@
 	@echo "Compilando $< "
-
-$(MLX):
-	@make -C $(MLX_PATH)
 
 $(OBJF):
 	@mkdir -p $(OBJ_DIR)
