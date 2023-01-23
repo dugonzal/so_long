@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utlis.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:31:18 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/22 17:08:55 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/23 22:16:16 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ int	key_press(int keycode, t_game *game)
 
 void	map_images(t_game *game)
 {
-	game->img.width = 10;
-	game->img.height = 10;
-	game->img.floor = mlx_xpm_file_to_image(game->mlx, "src/test.xpm",\
-	&game->img.width, &game->img.height);
+	game->img.floor = mlx_xpm_file_to_image(game->mlx, "src/black.xpm", &game->img.width, &game->img.height);
+	game->img.wall = mlx_xpm_file_to_image(game->mlx, "src/wall.xpm", &game->img.width, &game->img.height);
 }
 
 int	create_map(t_game *game)
@@ -51,8 +49,10 @@ int	create_map(t_game *game)
 		x = 0;
 		while (game->map.map[y][x])
 		{
+			if (game->map.map[y][x] == '0')
+				mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.floor, (game->img.width * x), (game->img.height * y ));
 			if (game->map.map[y][x] == '1')
-				mlx_put_image_to_window(game->mlx, game->mlx_win, game->img.floor, (game->img.width * x), (game->img.height * y));
+				mlx_put_image_to_window (game->mlx, game->mlx_win, game->img.wall, (game->img.width * x), (game->img.height * y));
 			x++;
 		}
 		y++;
