@@ -6,7 +6,7 @@
 #    By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2023/01/23 16:43:54 by dugonzal         ###   ########.fr        #
+#    Updated: 2023/01/23 20:34:24 by dugonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ MLX_PATH 	:= ./minilibx_macos/
 SRC_DIR 	:= src/
 OBJ_DIR 	:= obj/
 SRC_FILES 	:= so_long check_map read_map utlis
+
 #debuggers
 val 		:=  valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
 SANI 		:= -fsanitize=address -g3
@@ -34,7 +35,8 @@ $(NAME): $(OBJ)
 	@make -C libft
 	@mv libft/libft.a bin/
 	@make -C $(MLX_PATH)
-	@$(CC) $(CFLAGS) $(OBJ) $(MLX_CF) $(MLX_PATH)/libmlx.a bin/libft.a -o $(NAME)
+	mv	$(MLX_PATH)/libmlx.a bin/
+	@$(CC) $(CFLAGS) $(OBJ) $(MLX_CF) bin/*.a -o $(NAME)
 	@echo "so_long compilando!"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
