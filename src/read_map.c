@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/21 21:44:41 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/23 16:14:16 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static	void	check_ext(char *path)
 
 static int	open_fd(char *path, int fd)
 {
-	fd = open (path, O_RDONLY | __O_NOFOLLOW);
+	fd = open (path, O_RDONLY | O_NOFOLLOW);
 	if (!fd || fd == -1)
 	{
 		errors ("fd.open");
