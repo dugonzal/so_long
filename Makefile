@@ -3,29 +3,26 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
+#    By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2023/01/22 23:11:18 by ciclo            ###   ########.fr        #
+#    Updated: 2023/01/23 16:43:54 by dugonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= so_long
-MLX		= mlx_linux_linux.a
-CC		= clang -g
-CFLAGS	= -Wall -Wextra -Werror
-RM		= rm -rf
-MLX_CF	= -lm -lbsd -lmlx -lXext -lX11
-MLX_PATH 	= ./mlx_linux/
-
-SRC_DIR = src/
-OBJ_DIR = obj/
-
-SRC_FILES = so_long check_map read_map utlis
-
+NAME		:= so_long
+MLX			:= mlx_linux_linux.a
+CC			:= clang -g
+CFLAGS		:= -Wall -Wextra -Werror
+RM			:= rm -rf
+MLX_CF		:= -framework OpenGL -framework AppKit
+MLX_PATH 	:= ./minilibx_macos/
+SRC_DIR 	:= src/
+OBJ_DIR 	:= obj/
+SRC_FILES 	:= so_long check_map read_map utlis
 #debuggers
-val :=  valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
-SANI := -fsanitize=address -g3
+val 		:=  valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
+SANI 		:= -fsanitize=address -g3
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -37,11 +34,11 @@ $(NAME): $(OBJ)
 	@make -C libft
 	@mv libft/libft.a bin/
 	@make -C $(MLX_PATH)
-	@$(CC) $(CFLAGS) $(OBJ) bin/libft.a -Lbin -lft -L$(MLX_PATH) -lmlx -lXext -lX11 -lm -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(MLX_CF) $(MLX_PATH)/libmlx.a bin/libft.a -o $(NAME)
 	@echo "so_long compilando!"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-	@$(CC) -g $(CFLAGS) -c $< -o $@
+	@$(CC) -g $(CFLAGS)   -c $< -o $@
 	@echo "Compilando $< "
 
 $(OBJF):
@@ -53,7 +50,7 @@ clean:
 	@$(RM) $< $(OBJ_DIR)
 	@$(RM) bin
 	@make -C libft clean
-	@make -C mlx_linux clean
+	@make -C $(MLX_PATH) clean
 	@echo "clean done 🧹"
 
 fclean: clean
