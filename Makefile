@@ -6,7 +6,7 @@
 #    By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2023/01/23 20:34:24 by dugonzal         ###   ########.fr        #
+#    Updated: 2023/01/23 21:36:48 by dugonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC			:= clang -g
 CFLAGS		:= -Wall -Wextra -Werror
 RM			:= rm -rf
 MLX_CF		:= -framework OpenGL -framework AppKit
-MLX_PATH 	:= ./minilibx_macos/
+MLX_PATH 	:= ./minilibx_macos
 SRC_DIR 	:= src/
 OBJ_DIR 	:= obj/
 SRC_FILES 	:= so_long check_map read_map utlis
@@ -34,7 +34,7 @@ $(NAME): $(OBJ)
 	@mkdir -p bin
 	@make -C libft
 	@mv libft/libft.a bin/
-	@make -C $(MLX_PATH)
+	@make -C $(MLX_PATH) 2>/dev/null
 	mv	$(MLX_PATH)/libmlx.a bin/
 	@$(CC) $(CFLAGS) $(OBJ) $(MLX_CF) bin/*.a -o $(NAME)
 	@echo "so_long compilando!"
