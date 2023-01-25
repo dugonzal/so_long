@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/23 16:14:16 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/23 22:47:40 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	read_map(t_game *game)
 
 	fd = 0;
 	fd = open_fd(game->map.path, fd);
-	if (!(game->map.map = (char **)malloc(sizeof(char *) * (game->map.width + 1))))
+	game->map.map = (char **)malloc(sizeof(char *) * (game->map.width + 1));
+	if (!game->map.map)
 		return ;
 	line = get_next_line(fd);
 	if (!line)

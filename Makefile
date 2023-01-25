@@ -6,7 +6,7 @@
 #    By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2023/01/23 21:36:48 by dugonzal         ###   ########.fr        #
+#    Updated: 2023/01/24 19:16:19 by dugonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,7 @@ MLX_CF		:= -framework OpenGL -framework AppKit
 MLX_PATH 	:= ./minilibx_macos
 SRC_DIR 	:= src/
 OBJ_DIR 	:= obj/
-SRC_FILES 	:= so_long check_map read_map utlis
-
+SRC_FILES 	:= so_long check_map read_map utils create_map imprimir_mapa moves
 #debuggers
 val 		:=  valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
 SANI 		:= -fsanitize=address -g3
@@ -35,6 +34,7 @@ $(NAME): $(OBJ)
 	@make -C libft
 	@mv libft/libft.a bin/
 	@make -C $(MLX_PATH) 2>/dev/null
+	$(RM) minilibx_macos.log
 	mv	$(MLX_PATH)/libmlx.a bin/
 	@$(CC) $(CFLAGS) $(OBJ) $(MLX_CF) bin/*.a -o $(NAME)
 	@echo "so_long compilando!"

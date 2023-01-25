@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/24 19:28:58 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/25 14:23:40 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,18 @@
 #include "../libft/include/libft.h"
 #include "../minilibx_macos/mlx.h"
 
-# define Q 0x0C  // 12
-# define W 13
-# define A 0
-# define S 1
-# define D 2
+# define Q	0x0C  // 12
+#define ESC	0x35
+# define W	0x0D  // w
+# define D	0x02 
+# define S	0x01
+# define A	0x00 
 
-#define	black "images/black.xpm"
+#define	floors "images/black.xpm"
 #define	walls "images/wall.xpm"
 #define	portal "images/portal.xpm"
 #define coin	"images/coin.xpm"
-#define avatar "images/ava.xpm"
+#define avatar "images/0.xpm"
 //necesito una estructura para guradar los tamaños de la imagenes por separado, icluir esa lista en laestructura de imagenes
 typedef struct s_map
 {
@@ -53,6 +54,12 @@ typedef struct s_size
 	int x_player;
 	int y_wall;
 	int	x_wall;
+	int y_floor;
+	int	x_floor;
+	int y_exit;
+	int	x_exit;
+	int	y_collect;
+	int	x_collect;
 }t_size;
 
 typedef struct s_image
@@ -62,8 +69,6 @@ typedef struct s_image
 	void	*wall;
 	void	*floor;
 	void	*exit;
-	int		width;
-	int		height;
 	t_size	size;
 }	t_image;
 

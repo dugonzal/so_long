@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 19:15:15 by dugonzal          #+#    #+#             */
-/*   Updated: 2023/01/25 11:02:14 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:12:07 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int	mov_w(t_game *game)
 {
-    printf ("move w\n");
-    (void)game;
-    //printf ("%d", game->player.collectibles);
+    // la primera comprobacion que tengo que hacer antes de empezar el movimiento es que sea diferente de 1, osea un muro
+    (void)(game);
     return (0);
 }
 int mov_a(t_game *game)
