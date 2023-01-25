@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utlis.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:31:18 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/24 08:58:24 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:46:21 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,22 @@ void	errors(char *str)
 	exit (1);
 }
 
+
+void clean_map(t_game *game)
+{
+    while (game->map.map)
+    {
+        if (game->map.map)
+            free (game->map.map);
+        game->map.map++;
+    }
+}
+
 int	close_window(t_game *game)
 {
 	mlx_destroy_window (game->mlx, game->mlx_win);
+	//antes de salir del programa vamos a liberar la memoria reservada para el mapa
+	clean_map (game);
 	exit(EXIT_SUCCESS);
-}
-
-int	key_press(int keycode, t_game *game)
-{
-	if (keycode == Q)
-		close_window(game);
-	return (0);
 }
 
