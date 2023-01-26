@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:31:18 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/25 10:55:56 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:04:00 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	errors(char *str)
 	printf ("Error\n %s\n", str);
 	exit (1);
 }
-
 
 void clean_map(t_game *game)
 {

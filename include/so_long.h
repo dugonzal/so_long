@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/26 22:09:38 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/26 23:55:35 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # define D 2
 # define ESC 0x35
 
-#define	black "images/black.xpm"
+#define avatar "images/avatar.xpm"
 #define	walls "images/wall.xpm"
-#define	portal "images/portal.xpm"
-#define coin	"images/coin.xpm"
-#define avatar "images/ava.xpm"
+#define	 floors "images/floor.xpm"
+#define	exit_e "images/open-exit.xpm"
+#define collect	"images/collects.xpm"
 //necesito una estructura para guradar los tamaños de la imagenes por separado, icluir esa lista en laestructura de imagenes
 typedef struct s_map
 {
@@ -54,11 +54,19 @@ typedef struct s_size
 	int x_player;
 	int y_wall;
 	int	x_wall;
+	int y_floor;
+	int	x_floor;
+	int y_portal;
+	int x_portal;
+	int y_collect;
+	int x_collect;
+	int y_avatar;
+	int	x_avatar;
 }t_size;
 
 typedef struct s_image
 {
-	void	*collect;
+	void	*collects;
 	void	*player;
 	void	*wall;
 	void	*floor;

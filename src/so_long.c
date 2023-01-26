@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:01 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/23 22:18:38 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 00:01:45 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void events(t_game *game)
 	mlx_hook(game->mlx_win, 2, 1, key_press, game);
 }
 
+
+
 int	main(int ac, char **av)
 {
 	t_game	game;
@@ -40,10 +42,9 @@ int	main(int ac, char **av)
 		errors ("no se ha especificado un mapa");
 	map (&game, av[1]);
 	game.mlx = mlx_init();
-	game.mlx_win = mlx_new_window(game.mlx, game.map.width * 31 + 4, game.map.height * 32, "so_long");
+	game.mlx_win = mlx_new_window(game.mlx, game.map.width * 32 - 28, game.map.height * 32, "so_long");
 	events (&game);
-	map_images (&game);
-	create_map (&game);
+	get_images (&game); 
 	mlx_loop(game.mlx);
 	exit (EXIT_SUCCESS);
 } 
