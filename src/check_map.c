@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/22 23:15:26 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/27 00:09:06 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,4 @@ void	assign_caracteres_map(t_game *game)
 	exit != 1)
 		errors (" mapa invalido, hay mas o menos jugadores,\
 		coleccionables o salidas en el mapa");
-}
-
-void	parser_map(t_game *game)
-{
-	check_map(game);
-	assign_caracteres_map(game);
-	check_characters (game);
 }
