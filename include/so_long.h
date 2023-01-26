@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/24 19:28:58 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/26 22:09:38 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define A 0
 # define S 1
 # define D 2
+# define ESC 0x35
 
 #define	black "images/black.xpm"
 #define	walls "images/wall.xpm"
@@ -84,11 +85,11 @@ void	check_map(t_game *game);
 void	assign_caracteres_map(t_game *game);
 int		close_window(t_game *game);
 int		key_press(int keycode, t_game *game);
-void	map_images(t_game *game);
-void	create_map(t_game *game);
+//void	map_images(t_game *game);
+//void	create_map(t_game *game);
 
-//funcion chorra para imrpimir
-void print_game(t_game *game);
+//funcion chorra para imrpimi
 
+void	get_images(t_game *game);
 
 #endif

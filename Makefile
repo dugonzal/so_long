@@ -6,7 +6,7 @@
 #    By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2023/01/23 21:36:48 by dugonzal         ###   ########.fr        #
+#    Updated: 2023/01/26 22:11:26 by dugonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ MLX_CF		:= -framework OpenGL -framework AppKit
 MLX_PATH 	:= ./minilibx_macos
 SRC_DIR 	:= src/
 OBJ_DIR 	:= obj/
-SRC_FILES 	:= so_long check_map read_map utlis
+SRC_FILES 	:= so_long  read_map get_images check_map utils moves
 
 #debuggers
 val 		:=  valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
