@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:31:18 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/26 22:04:00 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 00:19:43 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,14 @@ void clean_map(t_game *game)
     }
 }
 
+//antes de salir del programa vamos a liberar la memoria reservada para el mapa
 int	close_window(t_game *game)
 {
 	mlx_destroy_window (game->mlx, game->mlx_win);
-	//antes de salir del programa vamos a liberar la memoria reservada para el mapa
+    mlx_destroy_image (game->mlx, game->img.exit);
+    mlx_destroy_image (game->mlx, game->img.collects);
+    mlx_destroy_image (game->mlx, game->img.floor);
+    mlx_destroy_image (game->mlx ,game->img.player);
     clean_map (game);
 	exit(EXIT_SUCCESS);
 }
