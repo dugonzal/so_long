@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 08:57:56 by dugonzal          #+#    #+#             */
-/*   Updated: 2023/01/26 23:51:44 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 00:37:17 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,11 @@ void	get_images(t_game *game)
 			else if (game->map.map[y][x] == 'C')
 				mlx_put_image_to_window (game->mlx, game->mlx_win, game->img.collects, (game->img.size.x_collect * x), (game->img.size.y_collect * y));
 			else if (game->map.map[y][x] == 'P')
+			{
 				mlx_put_image_to_window (game->mlx, game->mlx_win, game->img.player, (game->img.size.x_avatar * x), (game->img.size.y_avatar * y));
+				game->player.x = x;
+				game->player.y = y;
+			}
 			x++;
 		}
 		y++;
