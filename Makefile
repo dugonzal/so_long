@@ -6,7 +6,7 @@
 #    By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2023/01/26 22:11:26 by dugonzal         ###   ########.fr        #
+#    Updated: 2023/01/27 00:23:18 by dugonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,13 @@ SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 OBJF = .cache_exists
+
+ifeq ($(shell uname), Linux)
+$(NAME): IFLAGS = -I.  -I./mlx_linux
+$(NAME): MFLAGS	= -L./mlx_linux -lmlx_Linux -lXext -lX11
+$(NAME): MLX_PATH = ./mlx_linux
+$(NAME): MLX = libmlx.a
+endif
 
 $(NAME): $(OBJ)
 	@mkdir -p bin
