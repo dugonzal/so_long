@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/27 11:44:02 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:26:24 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_structs(char *path, t_game *game)
 	game->player.x = 0;
 	game->player.y = 0;
 	game->player.scape = 0;
+	game->player.moves = 1;
 }
 
 static	void	check_ext(char *path)

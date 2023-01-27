@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/27 10:21:34 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:21:35 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_player
 	int		y;
 	int		collectibles;
 	int		scape;
+	int		moves;
 }	t_player;
 
 
