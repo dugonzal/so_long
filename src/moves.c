@@ -6,40 +6,82 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 19:15:15 by dugonzal          #+#    #+#             */
-/*   Updated: 2023/01/27 00:41:19 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:09:59 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+static void	get(t_game *game)
+{
+	int y;
+	int x;
+
+	y = 0;
+	while (game->map.map[y] != 0)
+	{
+		x = 0;
+		while (game->map.map[y][x] != 0)
+		{
+			if (game->map.map[y][x] == '0')
+                  mlx_put_image_to_window (game->mlx, game->mlx_win, game->img.floor, (game->img.size.x_floor * x), (game->img.size.y_floor * y));
+			if (game->map.map[y][x] == 'P')
+				mlx_put_image_to_window (game->mlx, game->mlx_win, game->img.player, (game->img.size.x_avatar * x), (game->img.size.y_avatar * y));
+			x++;
+		}
+		y++;
+	}
+}
+
 int	mov_w(t_game *game)
 {
-    if (game->map.map[game->player.y][game->player.x] != '1')
+    if (game->map.map[game->player.y - 1][game->player.x] != '1')
     {
-        
+        game->player.y--; 
+        //al empezar los movimientos devemos cambiar la posicion del jugador y remplazar la anterior por un 0
+        game->map.map[game->player.y][game->player.x] = 'P';
+        game->map.map[game->player.y + 1][game->player.x] = '0';        
+        get(game);
     }
     return (0);
 }
+
+void mov_s(t_game *game)
+{
+    if (game->map.map[game->player.y + 1][game->player.x] != '1')
+    {
+       game->player.y++; 
+       game->map.map[game->player.y][game->player.x] = 'P'; 
+       game->map.map[game->player.y - 1][game->player.x] = '0';
+        get (game);
+    }
+    else  
+        printf ("es un muro\n");
+}
+
 int mov_a(t_game *game)
 {
-    (void)game;
-    printf ("move a\n");
-    return (0);
+    if (game->map.map[game->player.y][game->player.x - 1] != '1')
+    {
+       game->player.x--; 
+       game->map.map[game->player.y][game->player.x] = 'P'; 
+       game->map.map[game->player.y ][game->player.x + 1] = '0';
+       get (game);
+    }
+    return 0;
 }
 
-int mov_d(t_game *game)
+void mov_d(t_game *game)
 {
-    (void)game;
-    printf ("move d\n");
-    return (0);
+    if (game->map.map[game->player.y][game->player.x + 1] != '1')
+    {
+        game->player.x++; 
+       game->map.map[game->player.y][game->player.x] = 'P'; 
+       game->map.map[game->player.y ][game->player.x - 1] = '0';
+       get (game);
+    }
 }
 
-int mov_s(t_game *game)
-{
-    (void)game;
-    printf ("move s\n");  
-    return (0); 
-}
 
 /// @brief controlador de los eventos de teclado
 /// @param keycode // evento de teclado detectado 
