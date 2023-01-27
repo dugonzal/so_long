@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/27 19:51:49 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:41:06 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,25 @@ void	check_characters(t_game *game)
 
 void	check_map(t_game *game)
 {
-	int		x;
+	int		yx;
 	int		err;
 	size_t	len;
 
-	x = 0;
+	yx = 0;
 	err = 0;
 	len = arr_size (game->map.map);
-	while (x < game->map.width)
+	while (yx < game->map.width)
 	{
-		if (game->map.map[0][x] != '1' \
-		|| game->map.map[len - 1][x] != '1')
+		if (game->map.map[0][yx] != '1' \
+		|| game->map.map[len - 1][yx] != '1')
 			err++;
-		x++;
+		yx++;
 	}
-	x = -1;
-	while (++x < game->map.height)
+	yx = -1;
+	while (++yx < game->map.height)
 	{
-		if (game->map.map[x][0] != '1' || \
-		game->map.map[x][game->map.width - 2] != '1')
+		if (game->map.map[yx][0] != '1' || \
+		game->map.map[yx][game->map.width - 2] != '1')
 			err++;
 	}
 	if (err > 1)
