@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 10:19:55 by dugonzal          #+#    #+#             */
-/*   Updated: 2023/01/27 10:35:45 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:50:08 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ void    print_map(t_game *game)
     y = 0;
     while (game->map.map[y])
     {
-        printf ("%s", game->map.map[y]);
-        
+        printf ("%s", game->map.map[y]);     
         y++;
     }
     printf ("\n");

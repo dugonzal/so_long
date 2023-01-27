@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 19:15:15 by dugonzal          #+#    #+#             */
-/*   Updated: 2023/01/27 20:24:56 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:39:51 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ static void	get(t_game *game)
 	}
 }
 
-/// @brief 
-/// @param game 
-/// @return 
 void	mov_w(t_game *game)
 {
     if (game->map.map[game->player.y - 1][game->player.x] != '1' && game->map.map[game->player.y - 1][game->player.x] != 'E')
