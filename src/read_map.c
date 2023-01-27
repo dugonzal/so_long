@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/23 16:14:16 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:44:02 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	init_structs(char *path, t_game *game)
 	game->map.height = 0;
 	game->map.width = 0;
 	game->map.player = 0;
-	game->map.count = 0;
 	game->map.path = path;
 	game->player.collectibles = 0;
 	game->player.x = 0;

@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 19:15:15 by dugonzal          #+#    #+#             */
-/*   Updated: 2023/01/27 11:09:59 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 13:38:06 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ int	mov_w(t_game *game)
 {
     if (game->map.map[game->player.y - 1][game->player.x] != '1')
     {
+        if (game->map.map[game->player.y - 1][game->player.x] == 'E')
+        {
+            printf ("ganaste\n");
+            close_window(game);
+        }
         game->player.y--; 
         //al empezar los movimientos devemos cambiar la posicion del jugador y remplazar la anterior por un 0
         game->map.map[game->player.y][game->player.x] = 'P';
@@ -48,8 +53,13 @@ int	mov_w(t_game *game)
 
 void mov_s(t_game *game)
 {
-    if (game->map.map[game->player.y + 1][game->player.x] != '1')
+    if (game->map.map[game->player.y + 1][game->player.x] != '1' )
     {
+        if (game->map.map[game->player.y + 1][game->player.x] == 'E')
+        {
+            printf ("ganaste\n");
+            close_window(game);
+        }
        game->player.y++; 
        game->map.map[game->player.y][game->player.x] = 'P'; 
        game->map.map[game->player.y - 1][game->player.x] = '0';
@@ -63,6 +73,11 @@ int mov_a(t_game *game)
 {
     if (game->map.map[game->player.y][game->player.x - 1] != '1')
     {
+        if (game->map.map[game->player.y][game->player.x - 1] == 'E')
+        {
+            printf ("ganaste\n");
+            close_window(game);
+        }
        game->player.x--; 
        game->map.map[game->player.y][game->player.x] = 'P'; 
        game->map.map[game->player.y ][game->player.x + 1] = '0';
@@ -75,7 +90,12 @@ void mov_d(t_game *game)
 {
     if (game->map.map[game->player.y][game->player.x + 1] != '1')
     {
-        game->player.x++; 
+        if (game->map.map[game->player.y][game->player.x + 1] == 'E')
+        {
+            printf ("ganaste\n");
+            close_window(game);
+        }
+       game->player.x++; 
        game->map.map[game->player.y][game->player.x] = 'P'; 
        game->map.map[game->player.y ][game->player.x - 1] = '0';
        get (game);

@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 08:57:56 by dugonzal          #+#    #+#             */
-/*   Updated: 2023/01/27 09:46:41 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 13:37:04 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	get_images(t_game *game)
 			if (game->map.map[y][x] == '1')
 				mlx_put_image_to_window (game->mlx, game->mlx_win, game->img.wall, (game->img.size.x_wall * x), (game->img.size.y_wall * y));
 			else if (game->map.map[y][x] == '0')
-				mlx_put_image_to_window (game->mlx, game->mlx_win, game->img.floor, (game->img.size.x_floor), (game->img.size.y_floor));
+				mlx_put_image_to_window (game->mlx, game->mlx_win, game->img.floor, (game->img.size.x_floor * x), (game->img.size.y_floor * y + 10));
 			else if (game->map.map[y][x] == 'E')
 				mlx_put_image_to_window (game->mlx, game->mlx_win, game->img.exit, (game->img.size.x_portal * x), (game->img.size.y_portal * y));
 			else if (game->map.map[y][x] == 'C')
@@ -49,3 +49,11 @@ void	get_images(t_game *game)
 		y++;
 	}
 }
+
+
+/*
+void	change_map(t_game *game)
+{
+	
+}
+*/

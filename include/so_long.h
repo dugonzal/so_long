@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/26 23:55:35 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 10:21:34 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ typedef struct s_player
 
 typedef struct s_size
 {
-	int y_player;
-	int x_player;
 	int y_wall;
 	int	x_wall;
 	int y_floor;
@@ -93,11 +91,8 @@ void	check_map(t_game *game);
 void	assign_caracteres_map(t_game *game);
 int		close_window(t_game *game);
 int		key_press(int keycode, t_game *game);
-//void	map_images(t_game *game);
-//void	create_map(t_game *game);
-
 //funcion chorra para imrpimi
-
+void	change_map(t_game *game);
 void	get_images(t_game *game);
-
+void    print_map(t_game *game);
 #endif
