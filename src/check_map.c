@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/27 00:09:06 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 11:43:10 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	assign_caracteres_map(t_game *game)
 		while (game->map.map[y][x])
 		{
 			if (game->map.map[y][x] == 'C')
-				game->map.count += 1;
+				game->player.collectibles += 1;
 			else if (game->map.map[y][x] == 'P')
 				game->map.player += 1;
 			else if (game->map.map[y][x] == 'E')
