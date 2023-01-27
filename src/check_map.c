@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/27 20:41:06 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:42:51 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,7 @@ void	assign_caracteres_map(t_game *game)
 		}
 		y++;
 	}
-	if (!game->map.count ||  game->map.player != 1 || \
-	exit != 1)
+	if (!game->map.count || game->map.player != 1 || exit != 1)
 		errors (" mapa invalido, hay mas o menos jugadores,\
 		coleccionables o salidas en el mapa");
 }
