@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 19:15:15 by dugonzal          #+#    #+#             */
-/*   Updated: 2023/01/27 20:39:51 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/28 23:03:58 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void	get(t_game *game)
 		while (game->map.map[y][x] != 0)
 		{
 			if (game->map.map[y][x] == '0')
-                  mlx_put_image_to_window (game->mlx, game->mlx_win, game->img.floor, (game->img.size.x_floor * x), (game->img.size.y_floor * y));
+                  mlx_put_image_to_window (game->mlx, game->mlx_win, game->img.floor, (x * 32), (y * 32));
 			else if (game->map.map[y][x] == 'P')
-				mlx_put_image_to_window (game->mlx, game->mlx_win, game->img.player, (game->img.size.x_avatar * x), (game->img.size.y_avatar * y));
+				mlx_put_image_to_window (game->mlx, game->mlx_win, game->img.player, (x * 32), (y * 32));
 			x++;
 		}
 		y++;
@@ -41,15 +41,12 @@ void	mov_w(t_game *game)
             game->player.collectibles--;
         game->map.map[game->player.y][game->player.x] = '0';
         game->map.map[game->player.y - 1][game->player.x] = 'P';
-        game->player.y--; 
+        game->player.y--;
         get (game);
         printf ("moves -> %d\n", game->player.moves++);
     }
     if (game->map.map[game->player.y - 1][game->player.x] == 'E' && game->player.collectibles == 0)
-    {
-        printf ("ganaste\n");
-        close_window(game);
-    }
+        win (game);
 }
 
 void mov_s(t_game *game)
@@ -58,18 +55,15 @@ void mov_s(t_game *game)
     {
         if (game->map.map[game->player.y + 1][game->player.x] == 'C')
             game->player.collectibles--;
-       game->player.y++; 
-       game->map.map[game->player.y][game->player.x] = 'P'; 
+       game->player.y++;
+       game->map.map[game->player.y][game->player.x] = 'P';
        if (game->map.map[game->player.y - 1][game->player.x] != 'E')
             game->map.map[game->player.y - 1][game->player.x] = '0';
         get (game);
         printf ("moves -> %d\n", game->player.moves++);
     }
-    if (game->map.map[game->player.y + 1][game->player.x] == 'E' && game->player.collectibles == 0)
-    {
-        printf ("ganaste\n");
-        close_window(game);
-    }
+    else if (game->map.map[game->player.y + 1][game->player.x] == 'E' && game->player.collectibles == 0)
+        win (game);
 }
 
 int mov_a(t_game *game)
@@ -78,8 +72,8 @@ int mov_a(t_game *game)
     {
         if (game->map.map[game->player.y][game->player.x - 1] == 'C')
             game->player.collectibles--;
-       game->player.x--; 
-       game->map.map[game->player.y][game->player.x] = 'P'; 
+       game->player.x--;
+       game->map.map[game->player.y][game->player.x] = 'P';
        if (game->map.map[game->player.y][game->player.x] != 'E')
         game->map.map[game->player.y ][game->player.x + 1] = '0';
        get (game);
@@ -87,10 +81,7 @@ int mov_a(t_game *game)
 
     }
     else if (game->map.map[game->player.y][game->player.x - 1] == 'E' && game->player.collectibles == 0)
-    {
-        printf ("ganaste\n");
-        close_window(game);
-    }
+        win (game);
     return 0;
 }
 
@@ -100,8 +91,8 @@ void mov_d(t_game *game)
     {
         if (game->map.map[game->player.y][game->player.x + 1] == 'C')
             game->player.collectibles--;
-       game->player.x++; 
-       game->map.map[game->player.y][game->player.x] = 'P'; 
+       game->player.x++;
+       game->map.map[game->player.y][game->player.x] = 'P';
        if (game->map.map[game->player.y][game->player.x] != 'E')
          game->map.map[game->player.y ][game->player.x - 1] = '0';
        get (game);
@@ -109,17 +100,14 @@ void mov_d(t_game *game)
 
     }
     else if (game->map.map[game->player.y][game->player.x + 1] == 'E' && game->player.collectibles == 0)
-    {
-            printf ("ganaste\n");
-            close_window(game);
-    }
+        win (game);
 }
 
 
 /// @brief controlador de los eventos de teclado
-/// @param keycode // evento de teclado detectado 
+/// @param keycode // evento de teclado detectado
 /// @param game  // estructura del juego
-/// @return 
+/// @return
 int	key_press(int keycode, t_game *game)
 {
 	if (keycode == Q || keycode == ESC)
@@ -132,7 +120,7 @@ int	key_press(int keycode, t_game *game)
         mov_a(game);
     else if (keycode == S)
         mov_s (game);
-	return (0);
+    return (0);
 }
 
 
