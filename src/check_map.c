@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/28 23:06:34 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/29 15:28:14 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	check_characters(t_game *game)
 		{
 			if (!check (game, y, x))
 				errors ("hay carateres no contemplados en el mapa");
-			++x;
+			x++;
 		}
-		++y;
+		y++;
 	}
 }
 
@@ -79,7 +79,7 @@ void	assign_caracteres_map(t_game *game)
 		while (game->map.map[y][x])
 		{
 			if (game->map.map[y][x] == 'C')
-				game->player.collectibles += 1;
+				game->player.collectibles++;
 			else if (game->map.map[y][x] == 'P')
 				game->map.player += 1;
 			else if (game->map.map[y][x] == 'E')
@@ -89,6 +89,5 @@ void	assign_caracteres_map(t_game *game)
 		y++;
 	}
 	if (!game->player.collectibles || game->map.player != 1 || exit != 1)
-		errors (" mapa invalido, hay mas o menos jugadores,\
-		coleccionables o salidas en el mapa");
+		errors (" Mapa no valido, mas o menos caracteres de los necesarios");
 }

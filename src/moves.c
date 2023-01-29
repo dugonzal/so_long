@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 19:15:15 by dugonzal          #+#    #+#             */
-/*   Updated: 2023/01/28 23:28:04 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/29 15:14:07 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	mov_w(t_game *game)
 {
-    if (game->map.map[game->player.y - 1][game->player.x] != '1' && game->map.map[game->player.y - 1][game->player.x] != 'E')
+    if (game->map.map[game->player.y - 1][game->player.x] != '1' \
+    && game->map.map[game->player.y - 1][game->player.x] != 'E')
     {
         if (game->map.map[game->player.y - 1][game->player.x] == 'C')
             game->player.collectibles--;
@@ -24,13 +25,15 @@ void	mov_w(t_game *game)
         get_images (game);
         printf (GREEN"moves -> %d\n"RESET, game->player.moves++);
     }
-    if (game->map.map[game->player.y - 1][game->player.x] == 'E' && game->player.collectibles == 0)
+    if (game->map.map[game->player.y - 1][game->player.x] == 'E' \
+    && game->player.collectibles == 0)
         win (game);
 }
 
 void mov_s(t_game *game)
 {
-    if (game->map.map[game->player.y + 1][game->player.x] != '1' && game->map.map[game->player.y + 1][game->player.x] != 'E')
+    if (game->map.map[game->player.y + 1][game->player.x] != '1' \
+    && game->map.map[game->player.y + 1][game->player.x] != 'E')
     {
         if (game->map.map[game->player.y + 1][game->player.x] == 'C')
             game->player.collectibles--;
@@ -41,13 +44,15 @@ void mov_s(t_game *game)
         get_images (game);
         printf (GREEN"moves -> %d\n"RESET, game->player.moves++);
     }
-    else if (game->map.map[game->player.y + 1][game->player.x] == 'E' && game->player.collectibles == 0)
+    else if (game->map.map[game->player.y + 1][game->player.x] == 'E' \
+    && game->player.collectibles == 0)
         win (game);
 }
 
 int mov_a(t_game *game)
 {
-    if (game->map.map[game->player.y][game->player.x - 1] != '1' && game->map.map[game->player.y][game->player.x - 1] != 'E')
+    if (game->map.map[game->player.y][game->player.x - 1] != '1' \
+    && game->map.map[game->player.y][game->player.x - 1] != 'E')
     {
         if (game->map.map[game->player.y][game->player.x - 1] == 'C')
             game->player.collectibles--;
@@ -58,14 +63,16 @@ int mov_a(t_game *game)
        get_images (game);
         printf (GREEN"moves -> %d\n"RESET, game->player.moves++);
     }
-    else if (game->map.map[game->player.y][game->player.x - 1] == 'E' && game->player.collectibles == 0)
+    else if (game->map.map[game->player.y][game->player.x - 1] == 'E' \
+    && game->player.collectibles == 0)
         win (game);
     return 0;
 }
 
 void mov_d(t_game *game)
 {
-    if (game->map.map[game->player.y][game->player.x + 1] != '1' && game->map.map[game->player.y][game->player.x + 1] != 'E')
+    if (game->map.map[game->player.y][game->player.x + 1] != '1' \
+    && game->map.map[game->player.y][game->player.x + 1] != 'E')
     {
         if (game->map.map[game->player.y][game->player.x + 1] == 'C')
             game->player.collectibles--;
@@ -76,10 +83,10 @@ void mov_d(t_game *game)
        get_images (game);
         printf (GREEN"moves -> %d\n"RESET, game->player.moves++);
     }
-    else if (game->map.map[game->player.y][game->player.x + 1] == 'E' && game->player.collectibles == 0)
+    else if (game->map.map[game->player.y][game->player.x + 1] == 'E' \
+    && game->player.collectibles == 0)
         win (game);
 }
-
 
 /// @brief controlador de los eventos de teclado
 /// @param keycode // evento de teclado detectado
@@ -99,9 +106,3 @@ int	key_press(int keycode, t_game *game)
         mov_s (game);
     return (0);
 }
-
-
-/*
-
-una vez que podemos detectar los eventos del teclado, necesitamos saber donde se encuentra el jugador para poder alterar el array bidimencional;
-*/

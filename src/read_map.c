@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/27 20:26:24 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:16:47 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	init_structs(char *path, t_game *game)
 	game->map.player = 0;
 	game->map.path = path;
 	game->player.collectibles = 0;
+	game->player.collected = 0;
 	game->player.x = 0;
 	game->player.y = 0;
-	game->player.scape = 0;
 	game->player.moves = 1;
 }
 
@@ -31,8 +31,7 @@ static	void	check_ext(char *path)
 	char	*check;
 
 	check = ft_strrchr(path, '.');
-	if (!check || ft_strncmp(".ber", check, ft_strlen (check)) \
-		|| ft_strlen (path) < 4)
+	if (!check || ft_strncmp(".ber", check, 4) || ft_strlen (path) < 4)
 		errors ("ext");
 }
 
@@ -55,7 +54,8 @@ void	read_map(t_game *game)
 
 	fd = 0;
 	fd = open_fd(game->map.path, fd);
-	if (!(game->map.map = (char **)malloc(sizeof(char *) * (game->map.width + 1))))
+	game->map.map = (char **)malloc(sizeof(char *) * (game->map.width + 1));
+	if (!game->map.map)
 		return ;
 	line = get_next_line(fd);
 	if (!line)
@@ -63,6 +63,9 @@ void	read_map(t_game *game)
 	x = 0;
 	while (x < game->map.height)
 	{
+		game->map.map[x] = (char *)malloc(sizeof(char) * ft_strlen(line));
+		if (!game->map.map[x])
+			return ;
 		game->map.map[x] = line;
 		line = get_next_line (fd);
 		x++;

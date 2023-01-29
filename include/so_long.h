@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/28 23:03:24 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/29 15:28:35 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 #include "../minilibx_macos/mlx.h"
 
 # define Q 0x0C  // 12
-# define W 13
-# define A 0
-# define S 1
-# define D 2
+# define W 0x77//13
+# define A 0x61//0
+# define S 0x73//1
+# define D 0x64//2
 # define ESC 0x35
 
 #define avatar "images/avatar.xpm"
@@ -50,24 +50,9 @@ typedef struct s_player
 	int		x;
 	int		y;
 	int		collectibles;
-	int		scape;
+	int		collected;
 	int		moves;
 }	t_player;
-
-
-typedef struct s_size
-{
-	int y_wall;
-	int	x_wall;
-	int y_floor;
-	int	x_floor;
-	int y_portal;
-	int x_portal;
-	int y_collect;
-	int x_collect;
-	int y_avatar;
-	int	x_avatar;
-}t_size;
 
 typedef struct s_image
 {
@@ -92,14 +77,13 @@ typedef struct s_game
 void	init_structs(char *path, t_game *game);
 void	len_map(t_game *game);
 void	read_map(t_game *game);
-void	errors(char *str);
-void	check_map(t_game *game);
 void	assign_caracteres_map(t_game *game);
-int		close_window(t_game *game);
+void	print_map(t_game *game);
+void	check_map(t_game *game);
+void	errors(char *str);
 int		key_press(int keycode, t_game *game);
-//funcion chorra para imrpimi
-void	change_map(t_game *game);
 void	get_images(t_game *game);
-void    print_map(t_game *game);
+void	get_posicion_player(t_game *game);
 void    win(t_game *game);
+int		close_window(t_game *game);
 #endif
