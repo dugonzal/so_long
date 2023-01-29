@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+         #
+#    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2023/01/27 10:22:09 by dugonzal         ###   ########.fr        #
+#    Updated: 2023/01/29 21:19:34 by ciclo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ MLX_CF		:= -framework OpenGL -framework AppKit
 MLX_PATH 	:= ./minilibx_macos
 SRC_DIR 	:= src/
 OBJ_DIR 	:= obj/
-SRC_FILES 	:= so_long  read_map get_images check_map utils moves print_map
+SRC_FILES 	:= so_long  read_map get_images check_map utils moves
 #debuggers
 val 		:=  valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
 SANI 		:= -fsanitize=address -g3
@@ -39,7 +39,7 @@ $(NAME): $(OBJ)
 	@make -C libft
 	@mv libft/libft.a bin/
 	@make -C $(MLX_PATH) 2>/dev/null
-	mv	$(MLX_PATH)/libmlx.a bin/
+	@mv	$(MLX_PATH)/libmlx.a bin/
 	@$(CC) $(CFLAGS) $(OBJ) $(MLX_CF) bin/*.a -o $(NAME)
 	@echo "so_long compilando!"
 
@@ -70,10 +70,10 @@ re: fclean all
 .PHONY: all clean fclean re
 
 normi-i:
-	python3 -m venv venv
-	. venv/bin/activate
-	pip install norminette
+	@python3 -m venv venv
+	@. venv/bin/activate
+	@pip install norminette
 normi:
-	norminette
+	@norminette
 tree:
-	tree > esquema
+	@tree > esquema

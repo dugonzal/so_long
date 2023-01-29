@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/29 15:16:47 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/29 21:21:10 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	read_map(t_game *game)
 		line = get_next_line (fd);
 		x++;
 	}
-	free (line);
 	game->map.map[x] = NULL;
 	close (fd);
 }

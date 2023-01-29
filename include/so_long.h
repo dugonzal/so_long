@@ -6,15 +6,14 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/29 15:28:35 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/29 21:25:20 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
-#include "../libft/include/libft.h"
-#include "../minilibx_macos/mlx.h"
+# include	"../libft/include/libft.h"
+# include	"../minilibx_macos/mlx.h"
 
 # define Q 0x0C  // 12
 # define W 0x77//13
@@ -23,23 +22,22 @@
 # define D 0x64//2
 # define ESC 0x35
 
-#define avatar "images/avatar.xpm"
-#define	walls "images/wall.xpm"
-#define	 floors "images/floor.xpm"
-#define	exit_e "images/open-exit.xpm"
-#define collect	"images/collects.xpm"
-# define GREEN				"\033[0;32m"
-# define RED 				"\033[1;31m"
-# define GREY 				"\033[0;90m"
-# define CYAN				"\033[1;96m"
-# define RESET 				"\033[0m"
+# define AVATAR "images/avatar.xpm"
+# define WALLS "images/wall.xpm"
+# define FLOORS "images/floor.xpm"
+# define EXIT_E "images/open-exit.xpm"
+# define COLLECT	"images/collects.xpm"
+# define GREEN	"\033[0;32m"
+# define RED 	"\033[1;31m"
+# define GREY 	"\033[0;90m"
+# define CYAN	"\033[1;96m"
+# define RESET 	"\033[0m"
 
-//necesito una estructura para guradar los tamaños de la imagenes por separado, icluir esa lista en laestructura de imagenes
 typedef struct s_map
 {
 	char	**map;
-	int		width; // anchura && lenght -> anchura
-	int		height; // altura
+	int		width;
+	int		height;
 	char	*path;
 	int		player;
 	int		count;
@@ -84,6 +82,7 @@ void	errors(char *str);
 int		key_press(int keycode, t_game *game);
 void	get_images(t_game *game);
 void	get_posicion_player(t_game *game);
-void    win(t_game *game);
+void	win(t_game *game);
 int		close_window(t_game *game);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 08:57:56 by dugonzal          #+#    #+#             */
-/*   Updated: 2023/01/29 21:09:14 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/29 21:25:00 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static void	get_xpm(t_game *game)
 	int	x;
 	int	y;
 
-	game->img.player = mlx_xpm_file_to_image(game->mlx, avatar, &(x), &(y));
-	game->img.wall = mlx_xpm_file_to_image (game->mlx, walls, &(x), &(y));
-	game->img.floor = mlx_xpm_file_to_image(game->mlx, floors, &(x), &(y));
-	game->img.exit = mlx_xpm_file_to_image (game->mlx, exit_e, &(x), &(y));
-	game->img.collects = mlx_xpm_file_to_image (game->mlx, collect, &(x), &(y));
+	game->img.player = mlx_xpm_file_to_image(game->mlx, AVATAR, &(x), &(y));
+	game->img.wall = mlx_xpm_file_to_image (game->mlx, WALLS, &(x), &(y));
+	game->img.floor = mlx_xpm_file_to_image(game->mlx, FLOORS, &(x), &(y));
+	game->img.exit = mlx_xpm_file_to_image (game->mlx, EXIT_E, &(x), &(y));
+	game->img.collects = mlx_xpm_file_to_image (game->mlx, COLLECT, &(x), &(y));
 	check_xpm(game);
 }
 

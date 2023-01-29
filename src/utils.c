@@ -6,21 +6,43 @@
 /*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:31:18 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/29 16:58:06 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/29 21:20:40 by ciclo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+void	get_posicion_player(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (game->map.map[y])
+	{
+		x = 0;
+		while (game->map.map[y][x] != 0)
+		{
+			if (game->map.map[y][x] == 'P')
+			{
+				game->player.x = x;
+				game->player.y = y;
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
 void	errors(char *str)
 {
-	printf ("Error\n %s\n", str);
+	printf (RED"Error\n %s\n"RESET, str);
 	exit (1);
 }
 
 void	clean_map(t_game *game)
 {
-	int y;
+	int	y;
 
 	y = 0;
 	while (game->map.map[y])
@@ -37,23 +59,23 @@ int	close_window(t_game *game)
 	mlx_destroy_image (game->mlx, game->img.exit);
 	mlx_destroy_image (game->mlx, game->img.collects);
 	mlx_destroy_image (game->mlx, game->img.floor);
-	mlx_destroy_image (game->mlx ,game->img.player);
+	mlx_destroy_image (game->mlx, game->img.player);
 	clean_map (game);
 	exit(EXIT_SUCCESS);
 }
 
 void	win(t_game *game)
 {
-		ft_printf(GREEN"\n\
-		██████████████████████████████████████████████████████████████████\n\
-		██                                                              ██\n\
-		██  ███  ███  ██████  ██    ██     ██      ██ ██ ██    ██   ██  ██\n\
-		██   ██  ██  ██    ██ ██    ██     ██      ██ ██ ███   ██   ██  ██\n\
-		██    ████   █      █ ██    ██     ██  ██  ██ ██ ██ ██ ██   ██  ██\n\
-		██     ██    ██    ██ ██    ██     ██ ████ ██ ██ ██  ████       ██\n\
-		██     ██     ██████    ████        ███  ███  ██ ██   ███   ██  ██\n\
-		██                                                              ██\n\
-		██████████████████████████████████████████████████████████████████\n\
+	ft_printf(GREEN"\n\
+						██████████████████████████████████████████████████████████████████\n\
+						██                                                              ██\n\
+						██  ███  ███  ██████  ██    ██     ██      ██ ██ ██    ██   ██  ██\n\
+						██   ██  ██  ██    ██ ██    ██     ██      ██ ██ ███   ██   ██  ██\n\
+						██    ████   █      █ ██    ██     ██  ██  ██ ██ ██ ██ ██   ██  ██\n\
+						██     ██    ██    ██ ██    ██     ██ ████ ██ ██ ██  ████       ██\n\
+						██     ██     ██████    ████        ███  ███  ██ ██   ███   ██  ██\n\
+						██                                                              ██\n\
+						██████████████████████████████████████████████████████████████████\n\
 	\n"RESET);
 	close_window(game);
 }
