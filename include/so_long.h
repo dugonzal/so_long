@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/30 22:23:01 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:38:03 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ typedef struct s_player
 {
 	int		x;
 	int		y;
-	int		next_x;
-	int		next_y;
 	int		collectibles;
 	int		collected;
 	int		moves;
