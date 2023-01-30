@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/30 22:23:33 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/30 23:08:12 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ void	read_map(t_game *game)
 			return ;
 		game->map.map[x] = line;
 		line = get_next_line (fd);
+		free (line);
 		x++;
 	}
-	free (line);
 	game->map.map[x] = NULL;
 	close (fd);
 }
@@ -88,11 +88,13 @@ void	len_map(t_game *game)
 	while (*line)
 	{
 		if ((int)ft_strlen(line) != game->map.x)
-			errors ("line != width");
-		free (line);
+			errors ("la linea es diferente de la anchura");
 		game->map.y++;
 		line = get_next_line (fd);
+		free (line);
 	}
+	if (game->map.x == game->map.y)
+		errors ("el mapa es cuadrado y no rectangular");
 	line = NULL;
 	close (fd);
 }
