@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 19:15:15 by dugonzal          #+#    #+#             */
-/*   Updated: 2023/01/30 22:30:20 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:35:08 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	mov_s(t_game *game)
 			game->player.collectibles--;
 		game->player.y++;
 		game->map.map[game->player.y][game->player.x] = 'P';
-		if (game->map.map[game->player.y - 1][game->player.x] != 'E')
 		game->map.map[game->player.y - 1][game->player.x] = '0';
 		get_images (game);
 		printf (CYAN"moves -> %d\n"RESET, game->player.moves++);
@@ -58,8 +57,7 @@ void	mov_a(t_game *game)
 			game->player.collectibles--;
 		game->player.x--;
 		game->map.map[game->player.y][game->player.x] = 'P';
-		if (game->map.map[game->player.y][game->player.x] != 'E')
-			game->map.map[game->player.y][game->player.x + 1] = '0';
+		game->map.map[game->player.y][game->player.x + 1] = '0';
 		get_images (game);
 		printf (GREY"moves -> %d\n"RESET, game->player.moves++);
 	}
@@ -77,8 +75,7 @@ void	mov_d(t_game *game)
 			game->player.collectibles--;
 		game->player.x++;
 		game->map.map[game->player.y][game->player.x] = 'P';
-		if (game->map.map[game->player.y][game->player.x] != 'E')
-			game->map.map[game->player.y][game->player.x - 1] = '0';
+		game->map.map[game->player.y][game->player.x - 1] = '0';
 		get_images (game);
 		printf (GREEN"moves -> %d\n"RESET, game->player.moves++);
 	}
