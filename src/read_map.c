@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/30 23:08:12 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/30 23:16:48 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,5 @@ void	len_map(t_game *game)
 	}
 	if (game->map.x == game->map.y)
 		errors ("el mapa es cuadrado y no rectangular");
-	line = NULL;
 	close (fd);
 }
