@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/30 22:30:02 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:51:35 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	check_map(t_game *game)
 {
 	int		yx;
 	int		err;
-	size_t	len;
+	int		len;
 
 	yx = 0;
 	err = 0;
-	len = arr_size (game->map.map);
+	len = (int)arr_size (game->map.map);
 	while (yx < game->map.x)
 	{
 		if (game->map.map[0][yx] != '1' \
@@ -60,6 +60,7 @@ void	check_map(t_game *game)
 		if (game->map.map[yx][0] != '1' || \
 		game->map.map[yx][game->map.x - 2] != '1')
 			err++;
+		printf ("%s", game->map.map[yx]);
 	}
 	if (err > 1)
 		errors ("Map periferia != 1");
@@ -90,26 +91,4 @@ void	assign_caracteres_map(t_game *game)
 	}
 	if (!game->player.collectibles || game->map.player != 1 || exit != 1)
 		errors (" Mapa no valido, mas o menos caracteres de los necesarios");
-}
-
-void	next_poscicion(t_game *game)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (game->map.map[y])
-	{
-		x = 0;
-		while (game->map.map[y][x])
-		{
-			if (game->player.x == x)
-			{
-				game->player.next_x = x;
-				game->player.next_y = y;
-			}
-			x++;
-		}
-		y++;
-	}
 }
