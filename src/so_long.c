@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:01 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/30 17:50:34 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:29:17 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,20 @@ void	print_map(t_game *game)
 	int	y;
 
 	y = 0;
-	while (y < game->map.height)
+	while (y < game->map.y)
 	{
 		printf("%s", game->map.map[y]);
 		y++;
 	}
 }
 
+/*
 void	flood_fill(t_game *game, int x, int y)
 {
 	if (game->map.map[y][x] == 'C')
 	{
 		printf ("coleccionado ->[%d]", game->player.collected--);
 	}
-
-
 }
 
 void	flood_fill_while(t_game *game)
@@ -73,6 +72,7 @@ void	flood_fill_while(t_game *game)
 	else
 		errors ("no se han recogido todas las monedas");
 }
+*/
 
 int	main(int ac, char **av)
 {
@@ -82,12 +82,9 @@ int	main(int ac, char **av)
 		errors ("no se ha especificado un mapa");
 	init_map (&game, av[1]);
 	game.mlx = mlx_init();
-	game.mlx_win = mlx_new_window(game.mlx, game.map.width * 32 - 30, \
-	game.map.height * 32, "so_long");
+	game.mlx_win = mlx_new_window(game.mlx, game.map.x * 32 - 30, \
+	game.map.y * 32, "so_long");
 	events_hooks (&game);
-	// voy a raecorrer el mapa con otra funcion y recorrerlo con flood fill
-	//flood_fill (&game, game.player.x, game.player.y);
-	//flood_fill_while (&game);
 	get_posicion_player (&game);
 	get_images (&game);
 	mlx_loop(game.mlx);

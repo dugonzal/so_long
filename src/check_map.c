@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/30 22:23:48 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:30:02 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,26 @@ void	assign_caracteres_map(t_game *game)
 	}
 	if (!game->player.collectibles || game->map.player != 1 || exit != 1)
 		errors (" Mapa no valido, mas o menos caracteres de los necesarios");
+}
+
+void	next_poscicion(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (game->map.map[y])
+	{
+		x = 0;
+		while (game->map.map[y][x])
+		{
+			if (game->player.x == x)
+			{
+				game->player.next_x = x;
+				game->player.next_y = y;
+			}
+			x++;
+		}
+		y++;
+	}
 }
