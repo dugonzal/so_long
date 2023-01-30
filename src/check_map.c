@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/30 17:49:47 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/30 22:23:48 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	check_map(t_game *game)
 	yx = 0;
 	err = 0;
 	len = arr_size (game->map.map);
-	while (yx < game->map.width)
+	while (yx < game->map.x)
 	{
 		if (game->map.map[0][yx] != '1' \
 		|| game->map.map[len - 1][yx] != '1')
@@ -55,10 +55,10 @@ void	check_map(t_game *game)
 		yx++;
 	}
 	yx = -1;
-	while (++yx < game->map.height)
+	while (++yx < game->map.y)
 	{
 		if (game->map.map[yx][0] != '1' || \
-		game->map.map[yx][game->map.width - 2] != '1')
+		game->map.map[yx][game->map.x - 2] != '1')
 			err++;
 	}
 	if (err > 1)

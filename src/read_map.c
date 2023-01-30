@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/29 21:21:10 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/30 22:23:33 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	init_structs(char *path, t_game *game)
 {
 	game->map.map = NULL;
-	game->map.height = 0;
-	game->map.width = 0;
+	game->map.y = 0;
+	game->map.x = 0;
 	game->map.player = 0;
 	game->map.path = path;
 	game->player.collectibles = 0;
@@ -54,14 +54,14 @@ void	read_map(t_game *game)
 
 	fd = 0;
 	fd = open_fd(game->map.path, fd);
-	game->map.map = (char **)malloc(sizeof(char *) * (game->map.width + 1));
+	game->map.map = (char **)malloc(sizeof(char *) * (game->map.x + 1));
 	if (!game->map.map)
 		return ;
 	line = get_next_line(fd);
 	if (!line)
 		errors ("line");
 	x = 0;
-	while (x < game->map.height)
+	while (x < game->map.y)
 	{
 		game->map.map[x] = (char *)malloc(sizeof(char) * ft_strlen(line));
 		if (!game->map.map[x])
@@ -70,6 +70,7 @@ void	read_map(t_game *game)
 		line = get_next_line (fd);
 		x++;
 	}
+	free (line);
 	game->map.map[x] = NULL;
 	close (fd);
 }
@@ -83,13 +84,13 @@ void	len_map(t_game *game)
 	fd = 0;
 	fd = open_fd(game->map.path, fd);
 	line = get_next_line (fd);
-	game->map.width = ft_strlen (line);
+	game->map.x = ft_strlen (line);
 	while (*line)
 	{
-		if ((int)ft_strlen(line) != game->map.width)
+		if ((int)ft_strlen(line) != game->map.x)
 			errors ("line != width");
 		free (line);
-		game->map.height++;
+		game->map.y++;
 		line = get_next_line (fd);
 	}
 	line = NULL;
