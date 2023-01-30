@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+         #
+#    By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/11 14:14:26 by ciclo             #+#    #+#              #
-#    Updated: 2023/01/29 21:19:34 by ciclo            ###   ########.fr        #
+#    Updated: 2023/01/30 16:17:29 by dugonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= so_long
 MLX			:= mlx_linux_linux.a
-CC			:= clang -g
+CC			:= gcc -g
 CFLAGS		:= -Wall -Wextra -Werror
 RM			:= rm -rf
 MLX_CF		:= -framework OpenGL -framework AppKit
@@ -44,7 +44,7 @@ $(NAME): $(OBJ)
 	@echo "so_long compilando!"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-	@$(CC) -g $(CFLAGS)   -c $< -o $@
+	@$(CC) -g $(CFLAGS) -c $< -o $@
 	@echo "Compilando $< "
 
 $(OBJF):

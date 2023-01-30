@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 19:15:15 by dugonzal          #+#    #+#             */
-/*   Updated: 2023/01/29 21:18:05 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/30 20:07:58 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	next_poscicion(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (game->map.map[y])
+	{
+		x = 0;
+		while (game->map.map[y][x])
+		{
+			if (game->player.x == x)
+			{
+				game->player.next_x = x;
+				game->player.next_y = y;
+			}
+			x++;
+		}
+		y++;
+	}
+}
 
 void	mov_w(t_game *game)
 {

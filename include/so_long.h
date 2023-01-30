@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ciclo <ciclo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/29 21:25:20 by ciclo            ###   ########.fr       */
+/*   Updated: 2023/01/30 18:24:17 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 # include	"../libft/include/libft.h"
 # include	"../minilibx_macos/mlx.h"
 
-# define Q 0x0C  // 12
-# define W 0x77//13
-# define A 0x61//0
-# define S 0x73//1
-# define D 0x64//2
+# define Q 12
+# define W 13
+# define A 0
+# define S 1
+# define D 2
 # define ESC 0x35
 
 # define AVATAR "images/avatar.xpm"
@@ -47,6 +47,8 @@ typedef struct s_player
 {
 	int		x;
 	int		y;
+	int		next_x;
+	int		next_y;
 	int		collectibles;
 	int		collected;
 	int		moves;
