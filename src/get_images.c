@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 08:57:56 by dugonzal          #+#    #+#             */
-/*   Updated: 2023/01/30 17:21:43 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/31 09:11:20 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_xpm(t_game *game)
 {
 	if (!game->img.player || !game->img.wall || \
 	!game->img.floor || !game->img.exit || !game->img.collects)
-		errors("XPM not found");
+		errors("XPM =>[textures] not found");
 }
 
 static void	get_xpm(t_game *game)

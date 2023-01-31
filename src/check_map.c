@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 23:19:38 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/30 22:51:35 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/30 23:37:33 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	check_map(t_game *game)
 		if (game->map.map[yx][0] != '1' || \
 		game->map.map[yx][game->map.x - 2] != '1')
 			err++;
-		printf ("%s", game->map.map[yx]);
 	}
 	if (err > 1)
 		errors ("Map periferia != 1");
