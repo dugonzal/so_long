@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/30 22:38:03 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/31 09:03:00 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 # define D 2
 # define ESC 0x35
 
-# define AVATAR "images/avatar.xpm"
-# define WALLS "images/wall.xpm"
-# define FLOORS "images/floor.xpm"
-# define EXIT_E "images/open-exit.xpm"
+# define AVATAR "textures/avatar.xpm"
+# define WALLS "textures/wall.xpm"
+# define FLOORS "textures/floor.xpm"
+# define EXIT_E "textures/open-exit.xpm"
 # define COLLECT	"images/collects.xpm"
 # define GREEN	"\033[0;32m"
 # define RED 	"\033[1;31m"
