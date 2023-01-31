@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:01 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/30 22:29:17 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:08:55 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,40 +40,6 @@ void	print_map(t_game *game)
 	}
 }
 
-/*
-void	flood_fill(t_game *game, int x, int y)
-{
-	if (game->map.map[y][x] == 'C')
-	{
-		printf ("coleccionado ->[%d]", game->player.collected--);
-	}
-}
-
-void	flood_fill_while(t_game *game)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (y < game->map.height)
-	{
-		x = 0;
-		while (x < game->map.width)
-		{
-			flood_fill (game, x, y);
-			x++;
-		}
-		y++;
-	}
-	if (game->player.collected == 0)
-		return;
-
-	//read_map (game);
-	else
-		errors ("no se han recogido todas las monedas");
-}
-*/
-
 int	main(int ac, char **av)
 {
 	t_game	game;
@@ -82,10 +48,11 @@ int	main(int ac, char **av)
 		errors ("no se ha especificado un mapa");
 	init_map (&game, av[1]);
 	game.mlx = mlx_init();
-	game.mlx_win = mlx_new_window(game.mlx, game.map.x * 32 - 30, \
+	game.mlx_win = mlx_new_window(game.mlx, game.map.x * 32 - 32, \
 	game.map.y * 32, "so_long");
 	events_hooks (&game);
 	get_posicion_player (&game);
+	check_flood_file (&game);
 	get_images (&game);
 	mlx_loop(game.mlx);
 }

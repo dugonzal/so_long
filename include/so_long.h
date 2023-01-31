@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 14:21:26 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/31 09:08:21 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/01/31 10:09:51 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void	get_images(t_game *game);
 void	get_posicion_player(t_game *game);
 void	win(t_game *game);
 int		close_window(t_game *game);
+void	check_flood_file(t_game *game);
 
 #endif
