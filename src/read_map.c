@@ -6,7 +6,7 @@
 /*   By: dugonzal <dugonzal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 22:16:47 by ciclo             #+#    #+#             */
-/*   Updated: 2023/01/30 23:37:01 by dugonzal         ###   ########.fr       */
+/*   Updated: 2023/02/03 18:26:44 by dugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	init_structs(char *path, t_game *game)
 {
 	game->map.map = NULL;
 	game->map.y = 0;
+	game->player.check_exit = 0;
 	game->map.x = 0;
 	game->map.player = 0;
 	game->map.path = path;
@@ -54,7 +55,7 @@ void	read_map(t_game *game)
 
 	fd = 0;
 	fd = open_fd(game->map.path, fd);
-	game->map.map = (char **)malloc(sizeof(char *) * (game->map.x + 1));
+	game->map.map = (char **)malloc(sizeof(char *) * (game->map.y + 1));
 	if (!game->map.map)
 		return ;
 	line = get_next_line(fd);
